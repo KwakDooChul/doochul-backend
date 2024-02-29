@@ -34,8 +34,8 @@ public class User {
 
     private String study; // Study로 나중에 수정
 
-    @ColumnDefault("'user'")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     private LocalDateTime createdAt;
 

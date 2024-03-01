@@ -1,18 +1,17 @@
 package org.doochul.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name="users")
 @Entity
 public class User {
 
@@ -21,7 +20,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, length =30)
-    private String userName;
+    private String username;
 
     @Column(nullable = false, length =100)
     private String password;
@@ -29,12 +28,6 @@ public class User {
     @Column(nullable = false, length =10)
     private String gender;
 
-
-    private String memberShip; // MemberShip으로 나중에 수정
-
-    private String study; // Study로 나중에 수정
-
-    @Enumerated(EnumType.STRING)
     private Role role;
 
     private LocalDateTime createdAt;

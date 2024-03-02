@@ -1,8 +1,9 @@
 package org.doochul.application;
 
 import lombok.RequiredArgsConstructor;
-import org.doochul.domain.UserRepository;
-import org.doochul.domain.User;
+import org.doochul.domain.user.User;
+import org.doochul.domain.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder;

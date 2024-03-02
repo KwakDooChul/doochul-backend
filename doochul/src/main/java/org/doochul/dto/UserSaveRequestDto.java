@@ -1,12 +1,12 @@
 package org.doochul.dto;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.doochul.domain.Role;
-import org.doochul.domain.User;
+import org.doochul.domain.user.Gender;
+import org.doochul.domain.user.Identity;
+import org.doochul.domain.user.User;
 
 @Data
 @NoArgsConstructor
@@ -16,15 +16,15 @@ public class UserSaveRequestDto {
 
     private String username;
     private String password;
-    private String gender;
-    private Role role;
+    private Gender gender;
+    private Identity identity;
 
     public User toEntity() {
         return User.builder()
                 .username(username)
                 .password(password)
                 .gender(gender)
-                .role(Role.STUDENT)
+                .identity(Identity.GENERAL)
                 .build();
     }
 }

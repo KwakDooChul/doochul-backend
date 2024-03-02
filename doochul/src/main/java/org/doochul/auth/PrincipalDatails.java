@@ -1,7 +1,7 @@
 package org.doochul.auth;
 
 import lombok.Data;
-import org.doochul.domain.User;
+import org.doochul.domain.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -29,7 +29,7 @@ public class PrincipalDatails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collector = new ArrayList<>();
-        collector.add(() -> String.valueOf(user.getRole()));
+        collector.add(() -> String.valueOf(user.getIdentity()));
         return collector;
     }
 

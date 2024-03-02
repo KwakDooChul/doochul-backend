@@ -14,14 +14,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 @Configuration
 @EnableJpaRepositories
+@EnableWebSecurity
 public class SecurityConfig {
 
     private final PrincipalDetailsService principalDetailsService;
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+/*
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // CSRF 설정
@@ -30,5 +32,5 @@ public class SecurityConfig {
 
 
         return http.build();
-    }
+    }*/
 }

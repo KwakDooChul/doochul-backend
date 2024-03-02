@@ -1,30 +1,30 @@
 package org.doochul.domain.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.doochul.domain.BaseEntity;
 
-@Entity
+
+@Builder
 @Getter
+@Setter
+@Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
 public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private String name;
+    @Column(nullable = false, length =30)
+    private String username;
 
     private String deviceToken;
 
-    private String passWord;
+    @Column(nullable = false, length =100)
+    private String password;
 
     private Gender gender;
 
@@ -32,16 +32,16 @@ public class User extends BaseEntity {
 
     public User(
             final Long id,
-            final String name,
+            final String username,
             final String deviceToken,
-            final String passWord,
+            final String password,
             final Gender gender,
             final Identity identity
     ) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.deviceToken = deviceToken;
-        this.passWord = passWord;
+        this.password = password;
         this.gender = gender;
         this.identity = identity;
     }

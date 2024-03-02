@@ -28,6 +28,8 @@ public class User {
     @Column(nullable = false, length =10)
     private String gender;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Role role;
 
     private LocalDateTime createdAt;

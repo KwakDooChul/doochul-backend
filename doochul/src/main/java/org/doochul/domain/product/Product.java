@@ -1,34 +1,36 @@
-package org.doochul.domain.lesson;
+package org.doochul.domain.product;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.doochul.domain.BaseEntity;
-import org.doochul.domain.memberShip.MemberShip;
+import org.doochul.domain.user.User;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Lesson extends BaseEntity {
+public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    private ProductType type;
+
     @ManyToOne
-    @JoinColumn(name = "membership_id")
-    private MemberShip memberShip;
+    @JoinColumn(name = "teacher_id")
+    private User teacher;
 
-    private LocalDateTime startedAt;
-
-    private LocalDateTime endedAt;
-
-    private String record;
+    private Integer count;
 }

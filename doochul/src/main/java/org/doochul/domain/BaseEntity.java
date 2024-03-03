@@ -4,17 +4,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PreUpdate;
 import lombok.Getter;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDateTime;
 
 @Getter
 @MappedSuperclass
 public abstract class BaseEntity {
-    @NotNull
-    @Column(updatable = false)
+
+    @Column(updatable = false, nullable = false)
     private LocalDateTime createdAt;
-    @NotNull
+
+    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
     public BaseEntity() {

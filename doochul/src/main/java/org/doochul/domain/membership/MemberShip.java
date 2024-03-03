@@ -1,14 +1,16 @@
-package org.doochul.domain.membership;
+package org.doochul.domain.memberShip;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.doochul.domain.BaseEntity;
+import org.doochul.domain.product.Product;
 import org.doochul.domain.user.User;
 
 @Entity
@@ -20,11 +22,13 @@ public class MemberShip extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User student;
 
-    @OneToOne
-    private User trainer;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-    private Integer count;
+    private Integer remainingCount;
 }

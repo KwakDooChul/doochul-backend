@@ -1,4 +1,4 @@
-package org.doochul.domain.memberShip;
+package org.doochul.domain.membership;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

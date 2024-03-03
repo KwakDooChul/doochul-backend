@@ -1,7 +1,11 @@
 package org.doochul.service;
 
 public record Letter(
-        String content,
-        String link
+        String targetToken,
+        String title,
+        String body
 ) {
+//    public static Letter from(final LessonCreateEvent event) {
+//        return new Letter(event.targetToken(), event.title(), event.body());
+//    }
 }

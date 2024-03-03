@@ -1,10 +1,9 @@
 package org.doochul.config;
 
 import lombok.RequiredArgsConstructor;
-import org.doochul.auth.PrincipalDetailsService;
+import org.doochul.auth.PrincipalDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -16,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final PrincipalDetailsService principalDetailsService;
+    private final PrincipalDetailService principalDetailService;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -27,7 +26,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // CSRF 설정
         http
-                .userDetailsService(principalDetailsService)
+                .userDetailsService(principalDetailService)
                 .csrf(AbstractHttpConfigurer::disable);
 
 

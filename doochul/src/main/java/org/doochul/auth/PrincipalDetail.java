@@ -10,16 +10,16 @@ import java.util.Collection;
 import java.util.Map;
 
 @Data
-public class PrincipalDatails implements UserDetails {
+public class PrincipalDetail implements UserDetails {
 
     private User user;
     private Map<String, Object> attributes;
 
-    public PrincipalDatails(User user) {
+    public PrincipalDetail(User user) {
         this.user = user;
     }
 
-    public PrincipalDatails(User user, Map<String,Object> attributes) {
+    public PrincipalDetail(User user, Map<String,Object> attributes) {
         this.user = user;
         this.attributes = attributes;
     }

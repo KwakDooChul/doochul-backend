@@ -26,8 +26,10 @@ public class User extends BaseEntity {
     //@Column(nullable = false, length =100)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Enumerated(EnumType.STRING)
     private Identity identity;
 
     public User(
@@ -45,4 +47,5 @@ public class User extends BaseEntity {
         this.gender = gender;
         this.identity = identity;
     }
+
 }

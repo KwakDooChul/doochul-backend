@@ -1,9 +1,11 @@
 package org.doochul.application;
 
 import lombok.RequiredArgsConstructor;
+import org.doochul.auth.PrincipalDetail;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,23 +15,43 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder encoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * 회원가입 로직
+     */
     @Transactional
-    public Long 회원가입(User user) {
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword); // 해쉬
-        user.setPassword(encPassword);
-        userRepository.save(user);
-        return user.getId();
+    public Long save(User user) {
+        String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashPw);
+        return userRepository.save(user).getId();
     }
 
-
-
+    /**
+     * 회원수정 로직
+     */
     @Transactional
-    public boolean checkUsernameDuplicate(String username) {
-        return userRepository.existsByUsername(username);
+    public Long update(User user) {
+        User userEntity = userRepository.findById(user.getId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
+        return userEntity.getId();
     }
+//
+//    @Transactional(readOnly = true)
+//    public User findUser(String username) {
+//        User user = userRepository.findByUsername(username).orElseGet(User::new);
+//        return user;
+//    }
+//
+//    @Transactional
+//    public boolean checkUsernameDuplicate(String username) {
+//        return userRepository.existsByUsername(username);
+//    }
+//
+//    @Transactional
+//    public boolean checkUsernameDuplicate(String username) {
+//        return userRepository.existsByUsername(username);
+//    }
 
 
 

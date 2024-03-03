@@ -1,5 +1,7 @@
 package org.doochul.ui;
 
+import lombok.RequiredArgsConstructor;
+import org.doochul.application.UserService;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.function.Supplier;
 
+@RequiredArgsConstructor
 @RestController
 public class UserController {
 
+    private final UserRepository userRepository;
+    private final UserService userService;
+
+
+    /**
+     * 회원가입 페이지
+     */
+    @GetMapping("/join")
+    public String userJoin() {
+        return "user-join";
+    }
+
+    /**
+     * 로그인 페이지
+     */
+    @GetMapping("/login")
+    public String userLogin() {
+        return "user-login";
+    }
 //    @GetMapping("/join")
 //    public String hello() {
 //        return "<h1>hello</h1>";

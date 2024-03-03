@@ -35,33 +35,27 @@ public class NotificationEventListener {
     @EventListener
     @Async
     public void handleNotificationEvent(final LessonCreateEvent event) {
+        sendNotification(Letter.of(event.student(), event.teacher(), event.lesson().getStartedAt(), SCHEDULED_LESSON));
+//        addRemindNotificationSchedule(userName, lessonName, startedAt);
+//        addDismissalNotificationSchedule(userName, lessonName, endedAt);
+    }
+
+    @EventListener
+    @Async
+    public void handleNotificationEvent1(final LessonWithdrawnEvent event) {
         final Lesson lesson = event.lesson();
         final User user = event.user();
         final String userName = user.getName();
         final String lessonName = lesson.getName();
         final LocalDateTime startedAt = lesson.getStartedAt();
         final LocalDateTime endedAt = lesson.getEndedAt();
-        sendNotification(userName,lessonName,startedAt, SCHEDULED_LESSON);
-        addRemindNotificationSchedule(userName,lessonName,startedAt);
-        addDismissalNotificationSchedule(userName,lessonName,endedAt);
+        sendNotification(userName, lessonName, startedAt);
+        addRemindNotificationSchedule(userName, lessonName, startedAt);
+        addDismissalNotificationSchedule(userName, lessonName, endedAt);
     }
 
-//    @EventListener
-//    @Async
-//    public void handleNotificationEvent1(final LessonWithdrawnEvent event) {
-//        final Lesson lesson = event.lesson();
-//        final User user = event.user();
-//        final String userName = user.getName();
-//        final String lessonName = lesson.getName();
-//        final LocalDateTime startedAt = lesson.getStartedAt();
-//        final LocalDateTime endedAt = lesson.getEndedAt();
-//        sendNotification(userName,lessonName,startedAt);
-//        addRemindNotificationSchedule(userName,lessonName,startedAt);
-//        addDismissalNotificationSchedule(userName,lessonName,endedAt);
-//    }
-
     public void sendNotification(final Letter letter) {
-        messageSendManager.sendMessageTo(letter,SCHEDULED_LESSON);
+        messageSendManager.sendMessageTo(letter, SCHEDULED_LESSON);
     }
 
     private void addRemindNotificationSchedule(final LocalDateTime startedAt) {

@@ -45,17 +45,18 @@ public class FcmMessageSender implements MessageSendManager {
         }
     }
 
-    public void sendMessageTo(final Letter letter) {
-        Notification notification = Notification.builder()
+    @Override
+    public void sendTo(final Letter letter) {
+        final Notification notification = Notification.builder()
                 .setTitle(letter.title())
                 .setBody(letter.body())
                 .build();
-        Message message = Message.builder()
+        final Message message = Message.builder()
                 .setToken(letter.targetToken())
                 .setNotification(notification)
                 .build();
         try {
-            String response = FirebaseMessaging.getInstance().sendAsync(message).get();
+            final String response = FirebaseMessaging.getInstance().sendAsync(message).get();
             log.info("알림 전송 성공 : " + response);
         } catch (InterruptedException e) {
             log.error("FCM 알림 스레드에서 문제가 발생했습니다.", e);

@@ -5,11 +5,10 @@ import org.doochul.application.UserService;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.function.Supplier;
 
@@ -38,35 +37,16 @@ public class UserController {
     }
 
     /**
-     * 유저 조인 페이지
+     *  아이디 중복 체크
      */
-    @GetMapping("/user")
-    public String user() {
-        return "user";
+    @GetMapping("/user/username/exists")
+    public ResponseEntity<String> checkUsernameDuplicate(@RequestParam(value = "username") String username) {
+        boolean isDuplicate = userService.checkUsernameDuplicate(username);
+        if (isDuplicate) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("사용할 수 없는 아이디입니다.");
+        } else {
+            return ResponseEntity.ok("사용할 수 있는 아이디입니다.");
+        }
     }
-//    @GetMapping("/join")
-//    public String hello() {
-//        return "<h1>hello</h1>";
-//    }
 
-//    @Autowired
-//    private UserRepository userRepository;
-//
-//    @PostMapping("/join")
-//    public String join(User user) { // key=value (약속된 규칙)
-//        System.out.println("user: " + user);
-//        System.out.println("username: " + user.getUsername());
-//        System.out.println("password: " + user.getPassword());
-//        userRepository.save(user);
-//        return "회원가입이 완료되었습니다.";
-//    }
-//
-//    @GetMapping("/join/{id}")
-//    public User detail(@PathVariable Long id) {
-//        User user = userRepository.findById(id).orElseThrow(() -> {
-//            return new IllegalArgumentException("해당 사용자는 없습니다.");
-//        });
-//
-//        return user;
-//    }
 }

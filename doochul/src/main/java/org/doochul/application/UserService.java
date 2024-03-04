@@ -29,7 +29,7 @@ public class UserService {
     }
 
     /**
-     * 회원수정 로직
+     * 회원 수정 로직
      */
     @Transactional
     public Long update(User user) {
@@ -39,31 +39,12 @@ public class UserService {
         return userEntity.getId();
     }
 
-//    /*
-//     * 회원조회 로직
-//     */
-//    @Transactional(readOnly = true)
-//    public User findUser(String username) {
-//        User user = userRepository.findByUsername(username).orElseGet(User::new);
-//        return user;
-//    }
-//
-//    @Transactional(readOnly = true)
-//    public User findUser(String username) {
-//        User user = userRepository.findByUsername(username).orElseGet(User::new);
-//        return user;
-//    }
-//
-//    @Transactional
-//    public boolean checkUsernameDuplicate(String username) {
-//        return userRepository.existsByUsername(username);
-//    }
-//
-//    @Transactional
-//    public boolean checkUsernameDuplicate(String username) {
-//        return userRepository.existsByUsername(username);
-//    }
-
-
+    /**
+     * 회원 중복 조회
+     */
+    @Transactional
+    public boolean checkUsernameDuplicate(String username) {
+        return userRepository.existsByUsername(username);
+    }
 
 }

@@ -18,7 +18,6 @@ import org.doochul.domain.BaseEntity;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "users")
-@RequiredArgsConstructor
 public class User extends BaseEntity {
 
     @Id

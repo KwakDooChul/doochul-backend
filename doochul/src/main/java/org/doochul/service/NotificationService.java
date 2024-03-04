@@ -30,8 +30,8 @@ public class NotificationService {
     private final TaskScheduler taskScheduler;
     private final MessageSendManager messageSendManager;
     private final Clock clock;
-    private final UserRepository userRepository;
-    private final LessonRepository lessonRepository;
+//    private final UserRepository userRepository;
+//    private final LessonRepository lessonRepository;
     private final Map<Long, List<ScheduledFuture<?>>> schedule = new HashMap<>();
 
     public void applyForLessons(final LessonCreateEvent event) {

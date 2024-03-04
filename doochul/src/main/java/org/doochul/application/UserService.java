@@ -2,6 +2,7 @@ package org.doochul.application;
 
 import lombok.RequiredArgsConstructor;
 import org.doochul.auth.PrincipalDetail;
+import org.doochul.domain.user.Gender;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,18 @@ public class UserService {
     public Long update(User user) {
         User userEntity = userRepository.findById(user.getId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
+        userEntity.update(user.getUsername(),bCryptPasswordEncoder.encode(user.getPassword()),user.getGender(),user.getIdentity());
         return userEntity.getId();
     }
+
+//    /*
+//     * 회원조회 로직
+//     */
+//    @Transactional(readOnly = true)
+//    public User findUser(String username) {
+//        User user = userRepository.findByUsername(username).orElseGet(User::new);
+//        return user;
+//    }
 //
 //    @Transactional(readOnly = true)
 //    public User findUser(String username) {

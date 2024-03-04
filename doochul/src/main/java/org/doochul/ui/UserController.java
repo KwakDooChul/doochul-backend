@@ -36,6 +36,14 @@ public class UserController {
     public String userLogin() {
         return "user-login";
     }
+
+    /**
+     * 유저 조인 페이지
+     */
+    @GetMapping("/user")
+    public String user() {
+        return "user";
+    }
 //    @GetMapping("/join")
 //    public String hello() {
 //        return "<h1>hello</h1>";

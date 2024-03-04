@@ -15,10 +15,12 @@ public class PrincipalDetail implements UserDetails {
     private User user;
     private Map<String, Object> attributes;
 
+    // 일반 사용자
     public PrincipalDetail(User user) {
         this.user = user;
     }
 
+    // auth 사용자
     public PrincipalDetail(User user, Map<String,Object> attributes) {
         this.user = user;
         this.attributes = attributes;

@@ -22,7 +22,7 @@ public class UserApiController {
      *  회원가입 API
      */
     @PostMapping("/join")
-    public Long save(UserSaveRequestDto userSaveRequestDto) {
+    public Long save(UserSaveRequestDto userSaveRequestDto) { //@RequestBody
         return userService.save(userSaveRequestDto.toEntity());
     }
 

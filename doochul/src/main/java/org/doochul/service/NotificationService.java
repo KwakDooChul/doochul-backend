@@ -34,10 +34,22 @@ public class NotificationService {
 //    private final LessonRepository lessonRepository;
     private final Map<Long, List<ScheduledFuture<?>>> schedule = new HashMap<>();
 
-    public void applyForLessons(final LessonCreateEvent event) {
-        sendNotification(Letter.of(event.student(), event.teacher(), event.lesson().getStartedAt(), SCHEDULED_LESSON));
-        addRemindNotificationSchedule(event);
-        addDismissalNotificationSchedule(event);
+    @EventListener(ApplicationReadyEvent.class)
+    public void initLessonNotification() {
+        final List<Lesson> lessons = lessonRepository.findByStartedAtBefore(LocalDateTime.now());
+        lessons.forEach(lesson -> {
+            addRemindNotificationSchedule(lesson.getMemberShip().getStudent(), lesson.getMemberShip().getProduct().getTeacher(), lesson);
+            addDismissalNotificationSchedule(lesson.getMemberShip().getStudent(), lesson.getMemberShip().getProduct().getTeacher(), lesson);
+        });
+    }
+
+    public void applyForLesson(final LessonCreateEvent event) {
+        final User student = event.student();
+        final User teacher = event.teacher();
+        final Lesson lesson = event.lesson();
+        sendNotification(Letter.of(student, teacher, lesson.getStartedAt(), SCHEDULED_LESSON));
+        addRemindNotificationSchedule(student,teacher,lesson);
+        addDismissalNotificationSchedule(student,teacher,lesson);
     }
 
     public void withdrawnForLessons(final LessonWithdrawnEvent event) {
@@ -51,27 +63,27 @@ public class NotificationService {
         messageSendManager.sendTo(letter);
     }
 
-    private void addRemindNotificationSchedule(final LessonCreateEvent event) {
-        final LocalDateTime reminderTime = event.lesson().getStartedAt().minusMinutes(10);
+    private void addRemindNotificationSchedule(final User student, final User teacher, final Lesson lesson) {
+        final LocalDateTime reminderTime = lesson.getStartedAt().minusMinutes(10);
         final Instant instant = toInstant(reminderTime);
-        final ScheduledFuture<?> remindSchedule = taskScheduler.schedule(() -> sendNotification(Letter.of(event.student(), event.teacher(), event.lesson().getStartedAt(), BEFORE_LESSON)), instant);
-        List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(event.lesson().getId(), k -> new ArrayList<>());
+        final ScheduledFuture<?> remindSchedule = taskScheduler.schedule(() -> sendNotification(Letter.of(student, teacher, lesson.getStartedAt(), BEFORE_LESSON)), instant);
+        List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(lesson.getId(), k -> new ArrayList<>());
         lessonSchedules.add(remindSchedule);
     }
 
-    private void addDismissalNotificationSchedule(final LessonCreateEvent event) {
-        final Instant instant = toInstant(event.lesson().getEndedAt());
-        final ScheduledFuture<?> dismissalSchedule = taskScheduler.schedule(() -> deductCountAndSendNotification(event), instant);
-        List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(event.lesson().getId(), k -> new ArrayList<>());
+    private void addDismissalNotificationSchedule(final User student, final User teacher, final Lesson lesson) {
+        final Instant instant = toInstant(lesson.getEndedAt());
+        final ScheduledFuture<?> dismissalSchedule = taskScheduler.schedule(() -> deductCountAndSendNotification(student, teacher, lesson), instant);
+        List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(lesson.getId(), k -> new ArrayList<>());
         lessonSchedules.add(dismissalSchedule);
     }
 
-    private void deductCountAndSendNotification(final LessonCreateEvent event) {
-        final MemberShip memberShip = event.memberShip();
+    private void deductCountAndSendNotification(final User student, final User teacher, final Lesson lesson) {
+        final MemberShip memberShip = lesson.getMemberShip();
         memberShip.decreasedCount();
-        sendNotification(Letter.of(event.student(), event.teacher(), event.lesson().getStartedAt(), AFTER_LESSON));
+        sendNotification(Letter.of(student, teacher, lesson.getStartedAt(), AFTER_LESSON));
         if (memberShip.isCountZero()) {
-            sendNotification(Letter.of(event.student(), event.teacher(), event.lesson().getStartedAt(), END_LESSON));
+            sendNotification(Letter.of(student, teacher, lesson.getStartedAt(), END_LESSON));
         }
     }
 

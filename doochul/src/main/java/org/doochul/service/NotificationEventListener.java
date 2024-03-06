@@ -14,13 +14,13 @@ public class NotificationEventListener {
 
     @EventListener
     @Async
-    public void handleNotificationEvent(final LessonCreateEvent event) {
-        notificationService.applyForLessons(event);
+    public void scheduleLessonNotificationEvent(final LessonCreateEvent event) {
+        notificationService.applyForLesson(event);
     }
 
     @EventListener
     @Async
-    public void handleNotificationEvent1(final LessonWithdrawnEvent event) {
+    public void withdrawnLessonNotificationEvent1(final LessonWithdrawnEvent event) {
         notificationService.withdrawnForLessons(event);
     }
 }

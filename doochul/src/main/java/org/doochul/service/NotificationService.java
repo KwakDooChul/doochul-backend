@@ -2,13 +2,20 @@ package org.doochul.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.doochul.application.RedisService;
+import org.doochul.domain.lesson.Lesson;
 import org.doochul.domain.lesson.LessonRepository;
 import org.doochul.domain.membership.MemberShip;
-import org.doochul.domain.user.UserRepository;
+import org.doochul.domain.user.User;
+import org.doochul.support.KeyGenerator;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,8 +37,10 @@ public class NotificationService {
     private final TaskScheduler taskScheduler;
     private final MessageSendManager messageSendManager;
     private final Clock clock;
-//    private final UserRepository userRepository;
-//    private final LessonRepository lessonRepository;
+    private final LessonRepository lessonRepository;
+    private final KeyGenerator keyGenerator;
+    private final RedisService redisService;
+
     private final Map<Long, List<ScheduledFuture<?>>> schedule = new HashMap<>();
 
     @EventListener(ApplicationReadyEvent.class)
@@ -59,22 +68,27 @@ public class NotificationService {
         schedule.remove(event.lesson().getId());
     }
 
+    @Async
     public void sendNotification(final Letter letter) {
-        messageSendManager.sendTo(letter);
+        final String key = keyGenerator.generateAccountKey(letter.targetToken());
+        if (redisService.setNX(key, "notification", Duration.ofSeconds(5))) {
+            messageSendManager.sendTo(letter);
+            redisService.delete(key);
+        }
     }
 
     private void addRemindNotificationSchedule(final User student, final User teacher, final Lesson lesson) {
         final LocalDateTime reminderTime = lesson.getStartedAt().minusMinutes(10);
         final Instant instant = toInstant(reminderTime);
         final ScheduledFuture<?> remindSchedule = taskScheduler.schedule(() -> sendNotification(Letter.of(student, teacher, lesson.getStartedAt(), BEFORE_LESSON)), instant);
-        List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(lesson.getId(), k -> new ArrayList<>());
+        final List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(lesson.getId(), k -> new ArrayList<>());
         lessonSchedules.add(remindSchedule);
     }
 
     private void addDismissalNotificationSchedule(final User student, final User teacher, final Lesson lesson) {
         final Instant instant = toInstant(lesson.getEndedAt());
         final ScheduledFuture<?> dismissalSchedule = taskScheduler.schedule(() -> deductCountAndSendNotification(student, teacher, lesson), instant);
-        List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(lesson.getId(), k -> new ArrayList<>());
+        final List<ScheduledFuture<?>> lessonSchedules = schedule.computeIfAbsent(lesson.getId(), k -> new ArrayList<>());
         lessonSchedules.add(dismissalSchedule);
     }
 

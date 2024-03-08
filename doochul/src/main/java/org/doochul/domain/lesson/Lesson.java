@@ -11,7 +11,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.doochul.domain.BaseEntity;
-import org.doochul.domain.memberShip.MemberShip;
+import org.doochul.domain.membership.MemberShip;
 
 @Entity
 @Getter

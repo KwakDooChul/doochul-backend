@@ -1,4 +1,4 @@
-package org.doochul.domain.memberShip;
+package org.doochul.domain.membership;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,4 +31,19 @@ public class MemberShip extends BaseEntity {
     private Product product;
 
     private Integer remainingCount;
+
+    public void decreasedCount() {
+        validateMinRemainingCount();
+        remainingCount -= 1;
+    }
+
+    public boolean isCountZero() {
+        return remainingCount == 0;
+    }
+
+    private void validateMinRemainingCount() {
+        if (remainingCount < 1) {
+            throw new IllegalArgumentException("안돼");
+        }
+    }
 }

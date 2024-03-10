@@ -21,13 +21,6 @@ import java.util.Collections;
 @Configuration
 public class UpdateRemainingCountJobConfig {
     @Bean
-    public Step updateRemainingCountStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, JdbcTemplate jdbcTemplate) {
-        return new StepBuilder("updateRemainingCountStep", jobRepository)
-                .tasklet(new UpdateRemainingCountTasklet(jdbcTemplate), transactionManager)
-                .build();
-    }
-
-    @Bean
     public Job updateRemainingCountJob(JobRepository jobRepository, PlatformTransactionManager transactionManager, JdbcTemplate jdbcTemplate) {
         return new JobBuilder("updateRemainingCountJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
@@ -35,7 +28,14 @@ public class UpdateRemainingCountJobConfig {
                 .build();
     }
 
+    @Bean
+    public Step updateRemainingCountStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, JdbcTemplate jdbcTemplate) {
+        return new StepBuilder("updateRemainingCountStep", jobRepository)
+                .tasklet(new UpdateRemainingCountTasklet(jdbcTemplate), transactionManager)
+                .build();
+    }
     private static class UpdateRemainingCountTasklet implements Tasklet {
+
         private final JdbcTemplate jdbcTemplate;
 
         public UpdateRemainingCountTasklet(JdbcTemplate jdbcTemplate) {

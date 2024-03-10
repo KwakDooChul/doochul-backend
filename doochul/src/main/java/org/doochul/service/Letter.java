@@ -1,7 +1,5 @@
 package org.doochul.service;
 
-import org.doochul.domain.user.User;
-
 import java.time.LocalDateTime;
 
 public record Letter(
@@ -10,12 +8,13 @@ public record Letter(
         String body
 ) {
     public static Letter of(
-            final User student,
-            final User teacher,
+            final String studentToken,
+            final String studentName,
+            final String teacherName,
             final LocalDateTime startedAt,
             final LessonStatus lessonStatus
     ) {
-        final String message = lessonStatus.getMessage(student.getName(), startedAt, teacher.getName());
-        return new Letter(student.getDeviceToken(),  lessonStatus.getTitle(), message);
+        final String message = lessonStatus.getMessage(studentName, startedAt, teacherName);
+        return new Letter(studentToken,  lessonStatus.getTitle(), message);
     }
 }

@@ -1,6 +1,6 @@
 package org.doochul.job;
 
-import org.doochul.service.Letter;
+import org.doochul.infra.dto.Letter;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -15,7 +15,6 @@ import org.springframework.batch.item.database.builder.JdbcPagingItemReaderBuild
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -27,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.doochul.service.LessonStatus.BEFORE_LESSON;
+import static org.doochul.domain.lesson.LessonStatus.BEFORE_LESSON;
 
 @Configuration
 public class SendNotificationBeforeLessonJobConfig {

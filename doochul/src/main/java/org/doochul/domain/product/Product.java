@@ -34,7 +34,6 @@ public class Product extends BaseEntity {
 
     private Integer count;
 
-
     public Product(final String name, final ProductType type, final User teacher, final Integer count) {
         this.name = name;
         this.type = type;

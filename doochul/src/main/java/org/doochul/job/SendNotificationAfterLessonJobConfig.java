@@ -28,13 +28,13 @@ import java.util.Optional;
 import static org.doochul.service.LessonStatus.AFTER_LESSON;
 
 @Configuration
-public class SandNotificationAfterLessonJobConfig {
+public class SendNotificationAfterLessonJobConfig {
     private static final int CHUNK_SIZE = 10;
 
     private final DataSource dataSource;
     private final SendNotificationItemWriter sendNotificationItemWriter;
 
-    public SandNotificationAfterLessonJobConfig(final DataSource dataSource, final SendNotificationItemWriter sendNotificationItemWriter) {
+    public SendNotificationAfterLessonJobConfig(final DataSource dataSource, final SendNotificationItemWriter sendNotificationItemWriter) {
         this.dataSource = dataSource;
         this.sendNotificationItemWriter = sendNotificationItemWriter;
     }

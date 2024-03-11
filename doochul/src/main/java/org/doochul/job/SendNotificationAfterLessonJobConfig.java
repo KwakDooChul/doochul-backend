@@ -15,8 +15,9 @@ import org.springframework.batch.item.database.builder.JdbcPagingItemReaderBuild
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -49,21 +50,21 @@ public class SendNotificationAfterLessonJobConfig {
 
     @Bean
     public Step sendNotificationBeforeClassStep(
-            JobRepository jobRepository,
-            PlatformTransactionManager transactionManager
+            final JobRepository jobRepository,
+            final PlatformTransactionManager transactionManager
     ) throws Exception {
         return new StepBuilder("addNotificationStep", jobRepository)
                 .<Map<String, Object>, Letter>chunk(CHUNK_SIZE, transactionManager)
                 .reader(addNotificationItemReader())
                 .processor(addNotificationItemProcessor())
                 .writer(sendNotificationItemWriter)
-                .taskExecutor(new SimpleAsyncTaskExecutor())
+                .taskExecutor(executor())
                 .build();
     }
 
     @Bean
     public JdbcPagingItemReader<Map<String, Object>> addNotificationItemReader() throws Exception {
-        Map<String, Object> parameterValues = new HashMap<>();
+        final Map<String, Object> parameterValues = new HashMap<>();
         parameterValues.put("endedAt", LocalDateTime.now());
 
         return new JdbcPagingItemReaderBuilder<Map<String, Object>>()
@@ -83,7 +84,7 @@ public class SendNotificationAfterLessonJobConfig {
         queryProvider.setFromClause("FROM lesson l JOIN users u ON l.student_id = u.id JOIN users t ON l.teacher_id = t.id");
         queryProvider.setWhereClause("WHERE l.ended_at <= :endedAt");
 
-        Map<String, Order> sortKeys = new HashMap<>(1);
+        final Map<String, Order> sortKeys = new HashMap<>(1);
         sortKeys.put("l.ended_at", Order.ASCENDING);
 
         queryProvider.setSortKeys(sortKeys);
@@ -99,5 +100,15 @@ public class SendNotificationAfterLessonJobConfig {
             LocalDateTime endedAt = (LocalDateTime) item.get("ended_at");
             return Letter.of(studentToken, studentName, teacherName, endedAt, AFTER_LESSON);
         };
+    }
+
+    @Bean
+    public TaskExecutor executor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(4);
+        executor.setWaitForTasksToCompleteOnShutdown(true);
+        executor.setAwaitTerminationSeconds(60);
+        executor.initialize();
+        return executor;
     }
 }

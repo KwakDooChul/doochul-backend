@@ -16,7 +16,9 @@ import org.springframework.batch.item.database.support.SqlPagingQueryProviderFac
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -57,7 +59,7 @@ public class SendNotificationBeforeLessonJobConfig {
                 .reader(addNotificationItemReader())
                 .processor(addNotificationItemProcessor())
                 .writer(sendNotificationItemWriter)
-                .taskExecutor(new SimpleAsyncTaskExecutor())
+                .taskExecutor(executor())
                 .build();
     }
 
@@ -98,5 +100,15 @@ public class SendNotificationBeforeLessonJobConfig {
             LocalDateTime startedAt = (LocalDateTime) item.get("started_at");
             return Letter.of(studentToken, studentName, teacherName, startedAt, BEFORE_LESSON);
         };
+    }
+
+    @Bean
+    public TaskExecutor executor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(4);
+        executor.setWaitForTasksToCompleteOnShutdown(true);
+        executor.setAwaitTerminationSeconds(60);
+        executor.initialize();
+        return executor;
     }
 }

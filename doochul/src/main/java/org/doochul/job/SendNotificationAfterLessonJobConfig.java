@@ -1,6 +1,6 @@
 package org.doochul.job;
 
-import org.doochul.service.Letter;
+import org.doochul.infra.dto.Letter;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.doochul.service.LessonStatus.AFTER_LESSON;
+import static org.doochul.domain.lesson.LessonStatus.AFTER_LESSON;
 
 @Configuration
 public class SendNotificationAfterLessonJobConfig {

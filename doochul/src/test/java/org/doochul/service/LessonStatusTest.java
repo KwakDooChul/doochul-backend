@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import org.doochul.domain.lesson.LessonStatus;
 import org.junit.jupiter.api.Test;
 
 class LessonStatusTest {

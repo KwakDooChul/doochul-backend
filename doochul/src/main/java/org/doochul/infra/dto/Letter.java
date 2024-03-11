@@ -1,4 +1,6 @@
-package org.doochul.service;
+package org.doochul.infra.dto;
+
+import org.doochul.domain.lesson.LessonStatus;
 
 import java.time.LocalDateTime;
 

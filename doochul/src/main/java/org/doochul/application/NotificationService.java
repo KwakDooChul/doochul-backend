@@ -1,18 +1,20 @@
-package org.doochul.service;
+package org.doochul.application;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.doochul.application.RedisService;
 import org.doochul.domain.lesson.Lesson;
 import org.doochul.domain.user.User;
+import org.doochul.application.event.LessonCreateEvent;
+import org.doochul.application.event.LessonWithdrawnEvent;
+import org.doochul.infra.dto.Letter;
 import org.doochul.support.KeyGenerator;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 
-import static org.doochul.service.LessonStatus.SCHEDULED_LESSON;
-import static org.doochul.service.LessonStatus.WITHDRAWN_LESSON;
+import static org.doochul.domain.lesson.LessonStatus.SCHEDULED_LESSON;
+import static org.doochul.domain.lesson.LessonStatus.WITHDRAWN_LESSON;
 
 @Slf4j
 @Service

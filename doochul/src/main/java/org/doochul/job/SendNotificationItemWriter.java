@@ -1,8 +1,8 @@
 package org.doochul.job;
 
 import lombok.extern.slf4j.Slf4j;
-import org.doochul.service.Letter;
-import org.doochul.service.MessageSendManager;
+import org.doochul.infra.dto.Letter;
+import org.doochul.application.MessageSendManager;
 import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.stereotype.Component;

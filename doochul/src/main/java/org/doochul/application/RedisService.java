@@ -18,7 +18,6 @@ public class RedisService {
         redisTemplate.delete(key);
     }
 
-
     public boolean setNX(final String key, final String value, final Duration duration) {
         return Boolean.TRUE.equals(redisTemplate.opsForValue().setIfAbsent(key, value, duration));
     }

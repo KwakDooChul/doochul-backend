@@ -17,7 +17,7 @@ public class MemberShipController {
     private final MemberShipService memberShipService;
 
     @PostMapping("/apply/{productId}")
-    public MemberShip apply(
+    public Long apply(
             @AuthenticationPrincipal final Long userId,
             @PathVariable Long productId) {
 

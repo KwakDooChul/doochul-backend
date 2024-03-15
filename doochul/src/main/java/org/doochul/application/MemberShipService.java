@@ -1,5 +1,6 @@
 package org.doochul.application;
 
+import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import org.doochul.domain.membership.MemberShip;
 import org.doochul.domain.membership.MemberShipRepository;
@@ -18,11 +19,18 @@ public class MemberShipService {
     private final MemberShipRepository memberShipRepository;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+    private final RedisService redisService;
 
-    public MemberShip save(Long userId, Long productId) {
-        Product product = productRepository.findById(productId).orElseThrow();
-        User user = userRepository.findById(userId).orElseThrow();
+    public Long save(final Long userId, final Long productId) {
+        final Product product = productRepository.findById(productId).orElseThrow();
+        final User user = userRepository.findById(userId).orElseThrow();
 
-        return memberShipRepository.save(MemberShip.of(user, product, product.getCount()));
+        final String key = Long.toString(userId);
+        if (redisService.setNX(key, "apply", Duration.ofSeconds(5))) {
+            final Long id = memberShipRepository.save(MemberShip.of(user, product, product.getCount())).getId();
+            redisService.delete(key);
+            return id;
+        }
+        throw new IllegalArgumentException();
     }
 }

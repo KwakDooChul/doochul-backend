@@ -47,7 +47,7 @@ public class MemberShip extends BaseEntity {
         }
     }
 
-    private MemberShip(Long id, User student, Product product, Integer remainingCount) {
+    public MemberShip(Long id, User student, Product product, Integer remainingCount) {
         this.id = id;
         this.student = student;
         this.product = product;

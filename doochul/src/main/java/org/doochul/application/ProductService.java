@@ -1,10 +1,11 @@
 package org.doochul.application;
 
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.doochul.domain.product.Product;
 import org.doochul.domain.product.ProductRepository;
-import org.doochul.ui.dto.ProductResponse;
+import org.doochul.domain.user.User;
+import org.doochul.domain.user.UserRepository;
+import org.doochul.ui.dto.ProductSaveRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,9 +13,10 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final UserRepository userRepository;
 
-    public List<ProductResponse> findMemberShipsById(Long userId) {
-        List<Product> products = productRepository.findByUserId(userId);
-        return ProductResponse.fromList(products);
+    public Long save(final Long userId, final ProductSaveRequest productSaveRequest) {
+        final User user = userRepository.findById(userId).orElseThrow();
+        return productRepository.save(Product.of(user, productSaveRequest)).getId();
     }
 }

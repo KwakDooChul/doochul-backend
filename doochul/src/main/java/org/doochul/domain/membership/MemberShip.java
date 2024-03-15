@@ -46,4 +46,15 @@ public class MemberShip extends BaseEntity {
             throw new IllegalArgumentException("안돼");
         }
     }
+
+    private MemberShip(Long id, User student, Product product, Integer remainingCount) {
+        this.id = id;
+        this.student = student;
+        this.product = product;
+        this.remainingCount = remainingCount;
+    }
+
+    public static MemberShip of(User student, Product product, Integer remainingCount) {
+        return new MemberShip(null, student, product, remainingCount);
+    }
 }

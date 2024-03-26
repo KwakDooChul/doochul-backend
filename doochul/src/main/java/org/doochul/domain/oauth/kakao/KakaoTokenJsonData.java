@@ -1,6 +1,5 @@
 package org.doochul.domain.oauth.kakao;
 
-import lombok.RequiredArgsConstructor;
 import org.doochul.ui.dto.KakaoTokenResponse;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -8,7 +7,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
 @Component
-@RequiredArgsConstructor
 public class KakaoTokenJsonData {
 
     private final WebClient webClient;
@@ -17,7 +15,12 @@ public class KakaoTokenJsonData {
     private static final String GRANT_TYPE = "authorization_code";
     private static final String CLIENT_ID = "2c577a66aabe83405bfba16807e8495b";
 
+    public KakaoTokenJsonData() {
+        this.webClient = WebClient.create();
+    }
+
     public KakaoTokenResponse getToken(String code) {
+
         String uri =
                 TOKEN_URI + "?grant_type=" + GRANT_TYPE + "&client_id=" + CLIENT_ID + "&redirect_uri=" + REDIRECT_URI
                         + "&code=" + code;

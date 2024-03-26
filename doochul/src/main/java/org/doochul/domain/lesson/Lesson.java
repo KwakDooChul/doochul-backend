@@ -31,8 +31,8 @@ public class Lesson extends BaseEntity {
     private MemberShip memberShip;
 
     @ManyToOne
-    @JoinColumn(name = "student_id")
-    private User student;
+    @JoinColumn(name = "general_id")
+    private User general;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
@@ -44,10 +44,10 @@ public class Lesson extends BaseEntity {
 
     private String record;
 
-    private Lesson(Long id, MemberShip memberShip, User student, User teacher, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
+    private Lesson(Long id, MemberShip memberShip, User general, User teacher, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
         this.id = id;
         this.memberShip = memberShip;
-        this.student = student;
+        this.general = general;
         this.teacher = teacher;
         this.startedAt = startedAt;
         this.endedAt = endedAt;

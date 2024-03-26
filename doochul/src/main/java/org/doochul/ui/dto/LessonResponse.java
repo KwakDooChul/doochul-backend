@@ -11,14 +11,14 @@ import java.util.List;
 public record LessonResponse(
         Long id,
         MemberShip memberShip,
-        User student,
+        User general,
         User teacher,
         LocalDateTime startedAt,
         LocalDateTime endedAt,
         String record
 ) {
     public static LessonResponse from(Lesson lesson) {
-        return new LessonResponse(lesson.getId(), lesson.getMemberShip(), lesson.getStudent(),
+        return new LessonResponse(lesson.getId(), lesson.getMemberShip(), lesson.getGeneral(),
                 lesson.getTeacher(), lesson.getStartedAt(), lesson.getEndedAt(),lesson.getRecord());
     }
 

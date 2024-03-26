@@ -16,11 +16,6 @@ public class LessonService {
     private final LessonRepository lessonRepository;
     private final UserRepository userRepository;
 
-    public List<LessonResponse> findMemberShipsById(Long userId) {
-        List<Lesson> lessons = lessonRepository.findByUserId(userId);
-        return LessonResponse.fromList(lessons);
-    }
-
     public Long save(final Long userId, final LessonResponse lessonResponse) {
         final User user = userRepository.findById(userId).orElseThrow();
         return lessonRepository.save(Lesson.of(user,lessonResponse)).getId();

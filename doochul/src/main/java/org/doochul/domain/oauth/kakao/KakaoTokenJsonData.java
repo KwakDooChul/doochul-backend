@@ -20,7 +20,6 @@ public class KakaoTokenJsonData {
     }
 
     public KakaoTokenResponse getToken(String code) {
-
         String uri =
                 TOKEN_URI + "?grant_type=" + GRANT_TYPE + "&client_id=" + CLIENT_ID + "&redirect_uri=" + REDIRECT_URI
                         + "&code=" + code;

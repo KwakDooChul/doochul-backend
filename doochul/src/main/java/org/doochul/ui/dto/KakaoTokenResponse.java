@@ -1,8 +1,8 @@
 package org.doochul.ui.dto;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class KakaoTokenResponse {
     private String access_token;
     private String token_type;

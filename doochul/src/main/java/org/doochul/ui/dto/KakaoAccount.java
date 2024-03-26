@@ -1,8 +1,8 @@
 package org.doochul.ui.dto;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class KakaoAccount {
     private Profile profile;
 }

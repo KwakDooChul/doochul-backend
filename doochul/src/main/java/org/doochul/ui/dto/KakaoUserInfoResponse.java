@@ -1,8 +1,8 @@
 package org.doochul.ui.dto;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class KakaoUserInfoResponse {
     private Long id;
     private String connected_at;

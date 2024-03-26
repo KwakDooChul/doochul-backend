@@ -1,4 +1,4 @@
-package org.doochul.domain.oauth.kakao;
+package org.doochul.ui.dto;
 
 import lombok.Data;
 

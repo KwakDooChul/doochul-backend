@@ -1,6 +1,7 @@
 package org.doochul.domain.oauth.kakao;
 
 import lombok.RequiredArgsConstructor;
+import org.doochul.ui.dto.KakaoUserInfoResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;

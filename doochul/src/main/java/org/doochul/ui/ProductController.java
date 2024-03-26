@@ -15,12 +15,6 @@ public class ProductController {
 
     private final ProductService productService;
 
-//    @GetMapping("/{userId}")
-//    private ResponseEntity<List<ProductResponse>> findMemberShipsById(@PathVariable Long userId) {
-//        List<ProductResponse> response = productService.findMemberShipsById(userId);
-//        return ResponseEntity.ok(response);
-//    }
-
     @PostMapping("/token")
     public String postToken(@AuthenticationPrincipal Long id) {
         return "안녕" + id;

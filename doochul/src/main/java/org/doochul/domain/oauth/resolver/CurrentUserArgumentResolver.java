@@ -13,10 +13,9 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 @Component
 public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolver {
-    // 토큰을 추출하는 함수
+
     private Long extractMemberIdFromToken() {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication);
         if (authentication == null || authentication.getName() == null) {
             throw new RuntimeException("토큰정보가 유효하지 않습니다.");
         }

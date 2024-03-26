@@ -29,9 +29,6 @@ public class UserService {
                 .build();
 
         userRepository.save(user);
-        log.info("새로운 회원 저장 완료");
-        log.info("socialId : " + socialInfo.getKeyCode());
-        log.info("nickname : " + socialInfo.getNickname());
         return user.getSocialInfo().getKeyCode();
     }
 }

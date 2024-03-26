@@ -1,16 +1,16 @@
 package org.doochul.domain.oauth.kakao;
 
 import lombok.RequiredArgsConstructor;
+import org.doochul.ui.dto.KakaoTokenResponse;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
 public class KakaoTokenJsonData {
+
     private final WebClient webClient;
     private static final String TOKEN_URI = "https://kauth.kakao.com/oauth/token";
     private static final String REDIRECT_URI = "http://localhost:8080/oauth/kakao";
@@ -21,7 +21,6 @@ public class KakaoTokenJsonData {
         String uri =
                 TOKEN_URI + "?grant_type=" + GRANT_TYPE + "&client_id=" + CLIENT_ID + "&redirect_uri=" + REDIRECT_URI
                         + "&code=" + code;
-        System.out.println(uri);
 
         Flux<KakaoTokenResponse> response = webClient.post()
                 .uri(uri)

@@ -18,16 +18,8 @@ public class UserService {
 
     @Transactional
     public String createUser(String keyCode, String nickname) {
-        SocialInfo socialInfo = SocialInfo.builder()
-                .keyCode(keyCode)
-                .nickname(nickname)
-                .build();
-
-        User user = User.builder()
-                .identity(Identity.GENERAL)
-                .socialInfo(socialInfo)
-                .build();
-
+        SocialInfo socialInfo = SocialInfo.of(keyCode, nickname);
+        User user = User.of(Identity.GENERAL, socialInfo);
         userRepository.save(user);
         return user.getSocialInfo().getKeyCode();
     }

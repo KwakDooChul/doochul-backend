@@ -89,9 +89,12 @@ public class User extends BaseEntity implements UserDetails {
         return true;
     }
 
-    @Builder
-    public User(Identity identity, SocialInfo socialInfo) {
+    private User(Identity identity, SocialInfo socialInfo) {
         this.identity = identity;
         this.socialInfo = socialInfo;
+    }
+
+    public static User of(final Identity identity, final SocialInfo socialInfo) {
+        return new User(identity, socialInfo);
     }
 }

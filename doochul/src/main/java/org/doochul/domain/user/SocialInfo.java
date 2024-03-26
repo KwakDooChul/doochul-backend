@@ -17,9 +17,12 @@ public class SocialInfo {
     @Column
     private String nickname;
 
-    @Builder
-    public SocialInfo(String keyCode, String nickname) {
+    private SocialInfo(String keyCode, String nickname) {
         this.keyCode = keyCode;
         this.nickname = nickname;
+    }
+
+    public static SocialInfo of(final String keyCode, final String nickname) {
+        return new SocialInfo(keyCode, nickname);
     }
 }

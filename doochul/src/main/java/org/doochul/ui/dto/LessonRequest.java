@@ -7,10 +7,10 @@ import org.doochul.domain.user.User;
 
 import java.time.LocalDateTime;
 
-@Getter
-public class LessonRequest {
-    private LocalDateTime startedAt;
-    private LocalDateTime endedAt;
-    private String record;
+public record LessonRequest(
+        LocalDateTime startedAt,
+        LocalDateTime endedAt,
+        String record
+) {
 
 }

@@ -3,10 +3,15 @@ package org.doochul.application;
 import lombok.RequiredArgsConstructor;
 import org.doochul.domain.lesson.Lesson;
 import org.doochul.domain.lesson.LessonRepository;
+import org.doochul.domain.membership.MemberShip;
+import org.doochul.domain.membership.MemberShipRepository;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
-import org.doochul.ui.dto.LessonResponse;
+import org.doochul.ui.dto.LessonRequest;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -14,11 +19,13 @@ import java.util.List;
 public class LessonService {
 
     private final LessonRepository lessonRepository;
-    private final UserRepository userRepository;
+    private final MemberShipRepository memberShipRepository;
 
-    public Long save(final Long userId, final LessonResponse lessonResponse) {
-        final User user = userRepository.findById(userId).orElseThrow();
-        return lessonRepository.save(Lesson.of(user,lessonResponse)).getId();
+    @Transactional
+    // request 받아서 save 하는 로직
+    public Long save(final Long membershipId, final LessonRequest lessonRequest) {
+        final MemberShip memberShip = memberShipRepository.findById(membershipId).orElseThrow();
+        return lessonRepository.save(Lesson.of(memberShip, lessonRequest.getStartedAt(), lessonRequest.getEndedAt(), lessonRequest.getRecord())).getId();
     }
 
 

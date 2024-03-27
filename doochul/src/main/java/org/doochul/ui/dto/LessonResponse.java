@@ -11,18 +11,15 @@ import java.util.List;
 public record LessonResponse(
         Long id,
         MemberShip memberShip,
-        User general,
-        User teacher,
         LocalDateTime startedAt,
         LocalDateTime endedAt,
         String record
 ) {
-    public static LessonResponse from(Lesson lesson) {
-        return new LessonResponse(lesson.getId(), lesson.getMemberShip(), lesson.getGeneral(),
-                lesson.getTeacher(), lesson.getStartedAt(), lesson.getEndedAt(),lesson.getRecord());
+    public static LessonResponse from(final Lesson lesson) {
+        return new LessonResponse(lesson.getId(), lesson.getMemberShip(), lesson.getStartedAt(), lesson.getEndedAt(),lesson.getRecord());
     }
 
-    public static List<LessonResponse> fromList(List<Lesson> lessons) {
+    public static List<LessonResponse> fromList(final List<Lesson> lessons) {
         return lessons.stream()
                 .map(LessonResponse::from)
                 .toList();

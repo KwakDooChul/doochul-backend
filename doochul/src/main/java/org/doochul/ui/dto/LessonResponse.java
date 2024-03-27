@@ -18,10 +18,4 @@ public record LessonResponse(
     public static LessonResponse from(final Lesson lesson) {
         return new LessonResponse(lesson.getId(), lesson.getMemberShip(), lesson.getStartedAt(), lesson.getEndedAt(), lesson.getRecord());
     }
-
-    public static List<LessonResponse> fromList(final List<Lesson> lessons) {
-        return lessons.stream()
-                .map(LessonResponse::from)
-                .toList();
-    }
 }

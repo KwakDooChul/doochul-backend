@@ -14,9 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.doochul.domain.BaseEntity;
 import org.doochul.domain.membership.MemberShip;
-import org.doochul.domain.user.User;
-import org.doochul.ui.dto.LessonRequest;
-import org.doochul.ui.dto.LessonResponse;
 
 @Entity
 @Getter
@@ -44,7 +41,8 @@ public class Lesson extends BaseEntity {
         this.endedAt = endedAt;
         this.record = record;
     }
+
     public static Lesson of(MemberShip memberShip, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
-        return new Lesson(null, memberShip,startedAt,endedAt,record);
+        return new Lesson(null, memberShip, startedAt, endedAt, record);
     }
 }

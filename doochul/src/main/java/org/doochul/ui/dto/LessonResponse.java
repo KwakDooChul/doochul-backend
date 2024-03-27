@@ -16,7 +16,7 @@ public record LessonResponse(
         String record
 ) {
     public static LessonResponse from(final Lesson lesson) {
-        return new LessonResponse(lesson.getId(), lesson.getMemberShip(), lesson.getStartedAt(), lesson.getEndedAt(),lesson.getRecord());
+        return new LessonResponse(lesson.getId(), lesson.getMemberShip(), lesson.getStartedAt(), lesson.getEndedAt(), lesson.getRecord());
     }
 
     public static List<LessonResponse> fromList(final List<Lesson> lessons) {
@@ -24,7 +24,4 @@ public record LessonResponse(
                 .map(LessonResponse::from)
                 .toList();
     }
-
-
-
 }

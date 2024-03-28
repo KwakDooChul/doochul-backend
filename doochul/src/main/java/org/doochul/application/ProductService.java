@@ -13,8 +13,8 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public List<ProductResponse> findMemberShipsById(Long userId) {
-        List<Product> products = productRepository.findByUserId(userId);
-        return ProductResponse.fromList(products);
+    public List<ProductResponse> findByProducts() {
+        List<Product> product = productRepository.findAll();
+        return ProductResponse.toResponse(product);
     }
 }

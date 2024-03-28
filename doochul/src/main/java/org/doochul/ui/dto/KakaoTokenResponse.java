@@ -1,13 +1,11 @@
 package org.doochul.ui.dto;
 
-import lombok.Getter;
-
-@Getter
-public class KakaoTokenResponse {
-    private String access_token;
-    private String token_type;
-    private String refresh_token;
-    private Integer expires_in;
-    private String scope;
-    private Integer refresh_token_expires_in;
+public record KakaoTokenResponse(
+        String access_token,
+        String token_type,
+        String refresh_token,
+        Integer expires_in,
+        String scope,
+        Integer refresh_token_expires_in
+) {
 }

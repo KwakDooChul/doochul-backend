@@ -1,8 +1,10 @@
 package org.doochul.ui.dto;
 
-import lombok.Getter;
-
-@Getter
-public class KakaoAccount {
-    private Profile profile;
+public record KakaoAccount(
+        Profile profile
+) {
+    public record Profile(
+            String nickname
+    ){
+    }
 }

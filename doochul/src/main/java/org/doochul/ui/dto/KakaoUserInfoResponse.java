@@ -1,10 +1,8 @@
 package org.doochul.ui.dto;
 
-import lombok.Getter;
-
-@Getter
-public class KakaoUserInfoResponse {
-    private Long id;
-    private String connected_at;
-    private KakaoAccount kakao_account;
+public record KakaoUserInfoResponse(
+        Long id,
+        String connected_at,
+        KakaoAccount kakao_account
+) {
 }

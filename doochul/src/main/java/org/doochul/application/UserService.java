@@ -3,7 +3,6 @@ package org.doochul.application;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.doochul.domain.user.Identity;
-import org.doochul.domain.user.SocialInfo;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.springframework.stereotype.Service;
@@ -17,10 +16,9 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public String createUser(String keyCode, String nickname) {
-        SocialInfo socialInfo = SocialInfo.of(keyCode, nickname);
-        User user = User.of(Identity.GENERAL, socialInfo);
+    public String createUser(final String socialId, final String nickname) {
+        User user = User.of(Identity.GENERAL, socialId, nickname);
         userRepository.save(user);
-        return user.getSocialInfo().getKeyCode();
+        return user.getSocialId().toString();
     }
 }

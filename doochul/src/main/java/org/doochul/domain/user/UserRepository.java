@@ -10,6 +10,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
         return findById(id).orElseThrow(() -> new IllegalArgumentException("해당 유저는 없습니다."));
     }
 
-    Optional<User> findBySocialInfoKeyCode(String keyCode);
-
+    Optional<User> findBySocialId(Long socialId);
 }

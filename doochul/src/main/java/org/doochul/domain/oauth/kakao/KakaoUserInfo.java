@@ -15,7 +15,7 @@ public class KakaoUserInfo {
         this.webClient = WebClient.create(USER_INFO_URI);
     }
 
-    public KakaoUserInfoResponse getUserInfo(String token) {
+    public KakaoUserInfoResponse getUserInfo(final String token) {
         Flux<KakaoUserInfoResponse> response = webClient.get()
                 .header("Authorization", "Bearer " + token)
                 .retrieve()

@@ -1,6 +1,7 @@
 package org.doochul.domain.oauth;
 
 import lombok.RequiredArgsConstructor;
+import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,13 +10,14 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class CustomUserDetailService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String keyCode) throws UsernameNotFoundException {
-        return userRepository.findBySocialInfoKeyCode(keyCode)
+    public UserDetails loadUserByUsername(final String socialId) throws UsernameNotFoundException {
+        User principal = userRepository.findBySocialId(Long.parseLong(socialId))
                 .orElseThrow(() -> new UsernameNotFoundException("오류"));
+        return new UserPrincipal(principal);
     }
 }

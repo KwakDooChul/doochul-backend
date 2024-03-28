@@ -1,6 +1,7 @@
 package org.doochul.domain.oauth.resolver;
 
-import org.doochul.domain.user.User;
+import lombok.RequiredArgsConstructor;
+import org.doochul.domain.oauth.UserPrincipal;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,15 +13,16 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 @Component
+@RequiredArgsConstructor
 public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolver {
 
-    private Long extractMemberIdFromToken() {
+    private Long extractUserIdFromToken() {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication.getName() == null) {
             throw new RuntimeException("토큰정보가 유효하지 않습니다.");
         }
-        User user = (User) authentication.getPrincipal();
-        return Long.parseLong(user.getSocialInfo().getKeyCode());
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        return userPrincipal.getSocialId();
     }
 
     @Override
@@ -33,6 +35,6 @@ public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolve
     public Object resolveArgument(
             MethodParameter parameter, ModelAndViewContainer mavContainer,
             NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
-        return extractMemberIdFromToken();
+        return extractUserIdFromToken();
     }
 }

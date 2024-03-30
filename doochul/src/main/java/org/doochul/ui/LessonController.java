@@ -12,7 +12,7 @@ public class LessonController {
     private final LessonService lessonService;
 
     @PostMapping("/save/{membershipId}")
-    public Long save(final @PathVariable Long membershipId, final @RequestBody LessonRequest lessonRequest) {
-        return lessonService.save(membershipId, lessonRequest);
+    public Long save(@AuthenticationPrincipal Long userId, @PathVariable final Long membershipId, @RequestBody final LessonRequest lessonRequest) {
+        return lessonService.save(userId, membershipId, lessonRequest);
     }
 }

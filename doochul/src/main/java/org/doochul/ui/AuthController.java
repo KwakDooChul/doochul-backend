@@ -1,6 +1,7 @@
 package org.doochul.ui;
 
-import lombok.Getter;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.doochul.application.AuthService;
@@ -25,11 +26,16 @@ public class AuthController {
 
     @GetMapping("/oauth/kakao")
     @ResponseBody
-    public ResponseEntity<String> login(@RequestParam("code") final String code) {
-        final String jwtToken = authService.loginProcess(code);
+    public ResponseEntity<String> login(@RequestParam("code") final String code, HttpServletResponse response) {
+        final String jwtToken = authService.loginForCreateJwt(code);
+
+        Cookie cookie = new Cookie("Authorization", jwtToken);
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(24 * 60 * 60);
+
+        response.addCookie(cookie);
 
         return ResponseEntity.status(HttpStatus.OK)
-                .header("Authorization", "Bearer " + jwtToken)
                 .body("JWT 토큰이 생성되었습니다.");
     }
 }

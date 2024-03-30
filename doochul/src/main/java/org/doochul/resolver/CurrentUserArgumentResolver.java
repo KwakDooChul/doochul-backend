@@ -31,7 +31,8 @@ public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolve
 
         HttpServletRequest httpServletRequest = webRequest.getNativeRequest(HttpServletRequest.class);
 
-        String token = httpServletRequest.getHeader("X-AUTH-TOKEN");
+        String token = jwtProvider.resolveToken(httpServletRequest);
+        System.out.println(token);
 
         return jwtProvider.getPayload(token);
     }

@@ -1,5 +1,6 @@
 package org.doochul.application;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.doochul.domain.user.Identity;
@@ -20,5 +21,10 @@ public class UserService {
         User user = User.of(Identity.GENERAL, socialId, nickname);
         userRepository.save(user);
         return user.getSocialId().toString();
+    }
+
+    @Transactional
+    public Optional<User> findUserBySocialId(final Long socialId) {
+        return userRepository.findBySocialId(socialId);
     }
 }

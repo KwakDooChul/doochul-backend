@@ -25,14 +25,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     );
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain chain)
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain chain)
             throws IOException, ServletException {
         log.info("인증 체크 필터 시작");
 
         final String token = jwtTokenProvider.resolveToken(request);
+
         if (list.contains(request.getRequestURI())) {
             log.info("인증 체크 필터 넘어가기");
-            chain.doFilter(request,response);
+            chain.doFilter(request, response);
             return;
         }
 

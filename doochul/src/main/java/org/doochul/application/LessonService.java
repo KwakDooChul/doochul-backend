@@ -20,7 +20,6 @@ public class LessonService {
     private final LessonRepository lessonRepository;
     private final MemberShipRepository memberShipRepository;
     private final UserRepository userRepository;
-    private final ProductRepository productRepository;
 
     @Transactional
     public Long save(final Long userId, final Long membershipId, final LessonRequest lessonRequest) {

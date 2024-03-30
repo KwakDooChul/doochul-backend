@@ -2,8 +2,7 @@ package org.doochul.ui;
 
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.ProductService;
-import org.doochul.domain.user.User;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.doochul.resolver.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

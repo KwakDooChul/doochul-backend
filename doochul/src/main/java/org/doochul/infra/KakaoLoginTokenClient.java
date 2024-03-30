@@ -26,9 +26,9 @@ public class KakaoLoginTokenClient {
         this.webClient = WebClient.create();
     }
 
-    public KakaoTokenResponse getTokenInfo(String code) {
+    public KakaoTokenResponse getTokenInfo(final String code) {
 
-        String uri = UriComponentsBuilder.fromUriString(TOKEN_URI)
+        final String uri = UriComponentsBuilder.fromUriString(TOKEN_URI)
                 .queryParam("grant_type", GRANT_TYPE)
                 .queryParam("client_id", CLIENT_ID)
                 .queryParam("redirect_uri", REDIRECT_URI)

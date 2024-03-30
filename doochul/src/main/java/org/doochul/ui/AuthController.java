@@ -1,5 +1,6 @@
 package org.doochul.ui;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.doochul.application.AuthService;
@@ -17,10 +18,15 @@ public class AuthController {
 
     private final AuthService authService;
 
+    @GetMapping("/login/kakao")
+    public String kakaoLogin() {
+        return "kakaoLogin";
+    }
+
     @GetMapping("/oauth/kakao")
     @ResponseBody
     public ResponseEntity<String> login(@RequestParam("code") final String code) {
-        String jwtToken = authService.loginProcess(code);
+        final String jwtToken = authService.loginProcess(code);
 
         return ResponseEntity.status(HttpStatus.OK)
                 .header("Authorization", "Bearer " + jwtToken)

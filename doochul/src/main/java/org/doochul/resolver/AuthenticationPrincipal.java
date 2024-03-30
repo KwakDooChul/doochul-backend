@@ -1,4 +1,4 @@
-package org.doochul.domain.oauth.resolver;
+package org.doochul.resolver;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

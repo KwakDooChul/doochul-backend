@@ -3,6 +3,7 @@ package org.doochul.resolver;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.doochul.common.AuthorizationExtractor;
 import org.doochul.domain.oauth.jwt.JwtProvider;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
@@ -29,11 +30,9 @@ public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolve
             MethodParameter parameter, ModelAndViewContainer mavContainer,
             NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
 
-        HttpServletRequest httpServletRequest = webRequest.getNativeRequest(HttpServletRequest.class);
+        final HttpServletRequest httpServletRequest = webRequest.getNativeRequest(HttpServletRequest.class);
 
-        String token = jwtProvider.resolveToken(httpServletRequest);
-        System.out.println(token);
-
+        final String token = AuthorizationExtractor.extract(httpServletRequest);
         return jwtProvider.getPayload(token);
     }
 }

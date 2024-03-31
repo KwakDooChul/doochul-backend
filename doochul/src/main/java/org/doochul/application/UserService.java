@@ -18,13 +18,8 @@ public class UserService {
 
     @Transactional
     public String createUser(final String socialId, final String nickname) {
-        User user = User.of(Identity.GENERAL, socialId, nickname);
+        final User user = User.of(socialId, nickname);
         userRepository.save(user);
         return user.getSocialId().toString();
-    }
-
-    @Transactional
-    public Optional<User> findUserBySocialId(final Long socialId) {
-        return userRepository.findBySocialId(socialId);
     }
 }

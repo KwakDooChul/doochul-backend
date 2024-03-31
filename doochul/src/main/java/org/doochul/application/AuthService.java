@@ -1,14 +1,15 @@
 package org.doochul.application;
 
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.doochul.domain.oauth.jwt.JwtProvider;
 import org.doochul.domain.user.User;
+import org.doochul.domain.user.UserRepository;
 import org.doochul.infra.KakaoLoginTokenClient;
 import org.doochul.infra.KakaoLoginUserClient;
 import org.doochul.ui.dto.KakaoTokenResponse;
 import org.doochul.ui.dto.KakaoUserInfoResponse;
+import org.doochul.ui.dto.LoginRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,26 +20,24 @@ public class AuthService {
     private final KakaoLoginTokenClient kakaoLoginTokenClient;
     private final KakaoLoginUserClient kakaoLoginUserClient;
     private final JwtProvider jwtProvider;
-    private final UserService userService;
+    private final UserRepository userRepository;
 
-    public String loginForCreateJwt(final String code) {
-        final KakaoTokenResponse kakaoTokenResponse = kakaoLoginTokenClient.getTokenInfo(code);
-
+    public String login(final LoginRequest request) {
+        final KakaoTokenResponse kakaoTokenResponse = kakaoLoginTokenClient.getTokenInfo(request.authorizationCode());
         final KakaoUserInfoResponse userInfo = kakaoLoginUserClient.getUserInfo(kakaoTokenResponse.access_token());
 
-        final Long socialId = userInfo.id();
+        final User user = userRepository.findBySocialIdAndSocialType(userInfo.id(), request.socialType())
+                .orElseGet(() -> initUser(userInfo, userInfo.id()));
 
-        final Optional<User> user = userService.findUserBySocialId(socialId);
+        final String jwtToken = jwtProvider.createToken(user.getId());
 
-        if (user.isEmpty()) {
-            String nickname = userInfo.kakao_account().profile().nickname();
-            userService.createUser(socialId.toString(), nickname);
-        }
-
-        final String jwtToken = jwtProvider.createToken(socialId.toString());
-
-        log.info("JWT 정보 : {} ", jwtToken);
+        log.info("User 로그인 성공: {} ", user);
 
         return jwtToken;
+    }
+
+    private User initUser(final KakaoUserInfoResponse userInfo, final Long socialId) {
+        final User user = User.of(socialId.toString(), userInfo.getName());
+        return userRepository.save(user);
     }
 }

@@ -28,6 +28,8 @@ public class User extends BaseEntity {
 
     private Long socialId;
 
+    private String socialType;
+
     private String deviceToken;
 
     private String passWord;
@@ -46,7 +48,7 @@ public class User extends BaseEntity {
         this.name = name;
     }
 
-    public static User of(final Identity identity, final String socialId, final String name) {
-        return new User(identity, socialId, name);
+    public static User of(final String socialId, final String name) {
+        return new User(Identity.GENERAL, socialId, name);
     }
 }

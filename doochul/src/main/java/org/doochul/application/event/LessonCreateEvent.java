@@ -1,4 +1,4 @@
-package org.doochul.service;
+package org.doochul.application.event;
 
 import org.doochul.domain.lesson.Lesson;
 import org.doochul.domain.user.User;

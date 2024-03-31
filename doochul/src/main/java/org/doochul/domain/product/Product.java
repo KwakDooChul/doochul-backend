@@ -33,4 +33,12 @@ public class Product extends BaseEntity {
     private User teacher;
 
     private Integer count;
+
+    public Product(final Long id, final String name, final ProductType type, final User teacher, final Integer count) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.teacher = teacher;
+        this.count = count;
+    }
 }

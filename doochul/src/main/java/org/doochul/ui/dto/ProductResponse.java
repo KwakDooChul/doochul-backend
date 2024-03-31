@@ -8,18 +8,19 @@ import org.doochul.domain.user.User;
 
 public record ProductResponse(
         Long id,
+        String name,
         ProductType type,
         User user,
         int count,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {
-    public static ProductResponse from(Product product) {
-        return new ProductResponse(product.getId(), product.getType(), product.getTeacher(),
+    public static ProductResponse from(final Product product) {
+        return new ProductResponse(product.getId(), product.getName(), product.getType(), product.getTeacher(),
                 product.getCount(), product.getCreatedAt(), product.getUpdatedAt());
     }
 
-    public static List<ProductResponse> fromList(List<Product> products) {
+    public static List<ProductResponse> to(final List<Product> products) {
         return products.stream()
                 .map(ProductResponse::from)
                 .toList();

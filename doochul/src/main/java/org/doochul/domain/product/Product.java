@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.doochul.domain.BaseEntity;
 import org.doochul.domain.user.User;
+import org.doochul.ui.dto.ProductRegisterRequest;
 
 @Entity
 @Getter
@@ -34,11 +35,21 @@ public class Product extends BaseEntity {
 
     private Integer count;
 
-    public Product(final Long id, final String name, final ProductType type, final User teacher, final Integer count) {
+    private Product(final Long id,
+                    final String name,
+                    final ProductType type,
+                    final User teacher,
+                    final Integer count
+    ) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.teacher = teacher;
         this.count = count;
+    }
+
+    public static Product of(final User user, final ProductRegisterRequest productRegisterRequest) {
+        return new Product(null, productRegisterRequest.name(), productRegisterRequest.type(), user,
+                productRegisterRequest.count());
     }
 }

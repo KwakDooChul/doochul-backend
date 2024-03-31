@@ -17,8 +17,8 @@ public class BatchScheduler {
     private final Job updateRemainingCountJob;
 
     public BatchScheduler(JobLauncher jobLauncher,
-                          @Qualifier("sandNotificationAfterLessonJob") Job sandNotificationAfterLessonJob,
-                          @Qualifier("sandNotificationBeforeLessonJob") Job sandNotificationBeforeLessonJob,
+                          @Qualifier("sendNotificationAfterLessonJob") Job sandNotificationAfterLessonJob,
+                          @Qualifier("sendNotificationBeforeLessonJob") Job sandNotificationBeforeLessonJob,
                           @Qualifier("updateRemainingCountJob") Job updateRemainingCountJob) {
         this.jobLauncher = jobLauncher;
         this.sandNotificationAfterLessonJob = sandNotificationAfterLessonJob;

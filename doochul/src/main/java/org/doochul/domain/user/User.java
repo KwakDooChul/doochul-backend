@@ -32,15 +32,11 @@ public class User extends BaseEntity {
 
     private String deviceToken;
 
-    private String passWord;
-
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
     private Identity identity;
-
-    private String email;
 
     private User(final Identity identity, final String socialId, final String name) {
         this.identity = identity;

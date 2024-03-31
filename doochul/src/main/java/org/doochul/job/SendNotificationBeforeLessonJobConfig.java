@@ -35,13 +35,15 @@ public class SendNotificationBeforeLessonJobConfig {
     private final DataSource dataSource;
     private final SendNotificationItemWriter sendNotificationItemWriter;
 
-    public SendNotificationBeforeLessonJobConfig(final DataSource dataSource, final SendNotificationItemWriter sendNotificationItemWriter) {
+    public SendNotificationBeforeLessonJobConfig(final DataSource dataSource,
+                                                 final SendNotificationItemWriter sendNotificationItemWriter) {
         this.dataSource = dataSource;
         this.sendNotificationItemWriter = sendNotificationItemWriter;
     }
 
     @Bean
-    public Job sandNotificationBeforeLessonJob(JobRepository jobRepository, PlatformTransactionManager transactionManager) throws Exception {
+    public Job sendNotificationBeforeLessonJob(JobRepository jobRepository,
+                                               PlatformTransactionManager transactionManager) throws Exception {
         return new JobBuilder("sandNotificationBeforeLessonJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(sendNotificationBeforeLessonStep(jobRepository, transactionManager))
@@ -80,8 +82,10 @@ public class SendNotificationBeforeLessonJobConfig {
     private PagingQueryProvider createQueryProvider() throws Exception {
         SqlPagingQueryProviderFactoryBean queryProvider = new SqlPagingQueryProviderFactoryBean();
         queryProvider.setDataSource(dataSource);
-        queryProvider.setSelectClause("SELECT u.device_token AS student_token, u.name AS student_name, t.name AS teacher_name, l.started_at");
-        queryProvider.setFromClause("FROM lesson l JOIN users u ON l.student_id = u.id JOIN users t ON l.teacher_id = t.id");
+        queryProvider.setSelectClause(
+                "SELECT u.device_token AS student_token, u.name AS student_name, t.name AS teacher_name, l.started_at");
+        queryProvider.setFromClause(
+                "FROM lesson l JOIN users u ON l.student_id = u.id JOIN users t ON l.teacher_id = t.id");
         queryProvider.setWhereClause("WHERE l.started_at <= :startedAt");
         Map<String, Order> sortKeys = new HashMap<>(1);
         sortKeys.put("l.started_at", Order.ASCENDING);

@@ -41,7 +41,7 @@ public class SendNotificationAfterLessonJobConfig {
     }
 
     @Bean
-    public Job sandNotificationAfterLessonJob(JobRepository jobRepository, PlatformTransactionManager transactionManager) throws Exception {
+    public Job sendNotificationAfterLessonJob(JobRepository jobRepository, PlatformTransactionManager transactionManager) throws Exception {
         return new JobBuilder("sandNotificationAfterLesson", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(sendNotificationBeforeClassStep(jobRepository, transactionManager))

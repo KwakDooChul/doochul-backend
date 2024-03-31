@@ -1,8 +1,9 @@
 package org.doochul.ui;
 
+import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.MemberShipService;
-import org.doochul.domain.membership.MemberShip;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,10 +18,8 @@ public class MemberShipController {
     private final MemberShipService memberShipService;
 
     @PostMapping("/apply/{productId}")
-    public Long apply(
-            @AuthenticationPrincipal final Long userId,
-            @PathVariable Long productId) {
-
-        return memberShipService.save(userId, productId);
+    public ResponseEntity<Void> apply(@AuthenticationPrincipal final Long userId, @PathVariable final Long productId) {
+        Long memberShipId = memberShipService.save(userId, productId);
+        return ResponseEntity.created(URI.create("/memberShips" + memberShipId)).build();
     }
 }

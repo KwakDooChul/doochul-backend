@@ -37,7 +37,13 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Identity identity;
 
-    public User(Long id, String name, String deviceToken, String passWord, Gender gender, Identity identity) {
+    public User(final Long id,
+                final String name,
+                final String deviceToken,
+                final String passWord,
+                final Gender gender,
+                final Identity identity
+    ) {
         this.id = id;
         this.name = name;
         this.deviceToken = deviceToken;

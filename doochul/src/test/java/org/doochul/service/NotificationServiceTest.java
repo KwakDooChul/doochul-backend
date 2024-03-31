@@ -1,6 +1,8 @@
 package org.doochul.service;
 
+import org.doochul.application.MessageSendManager;
 import org.doochul.application.RedisService;
+import org.doochul.infra.dto.Letter;
 import org.doochul.support.KeyGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

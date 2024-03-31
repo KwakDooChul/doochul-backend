@@ -11,7 +11,6 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.doochul.domain.BaseEntity;
 
 @Entity
@@ -27,6 +26,10 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
+    private Long socialId;
+
+    private String socialType;
+
     private String deviceToken;
 
     private String passWord;
@@ -36,4 +39,16 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Identity identity;
+
+    private String email;
+
+    private User(final Identity identity, final String socialId, final String name) {
+        this.identity = identity;
+        this.socialId = Long.parseLong(socialId);
+        this.name = name;
+    }
+
+    public static User of(final String socialId, final String name) {
+        return new User(Identity.GENERAL, socialId, name);
+    }
 }

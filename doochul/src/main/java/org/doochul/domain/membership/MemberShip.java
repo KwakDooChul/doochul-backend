@@ -32,6 +32,17 @@ public class MemberShip extends BaseEntity {
 
     private Integer remainingCount;
 
+    public MemberShip(final Long id, final User student, final Product product, final Integer remainingCount) {
+        this.id = id;
+        this.student = student;
+        this.product = product;
+        this.remainingCount = remainingCount;
+    }
+
+    public static MemberShip of(final User student, final Product product, final Integer remainingCount) {
+        return new MemberShip(null, student, product, remainingCount);
+    }
+
     public void decreasedCount() {
         validateMinRemainingCount();
         remainingCount -= 1;

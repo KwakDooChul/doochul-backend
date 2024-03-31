@@ -20,11 +20,11 @@ public class ProductService {
     private final UserRepository userRepository;
 
     public List<ProductResponse> findByProducts() {
-        List<Product> product = productRepository.findAll();
-        return ProductResponse.toResponse(product);
+        final List<Product> products = productRepository.findAll();
+        return ProductResponse.to(products);
     }
 
-    public Long saveProduct(final Long userId, final ProductRegisterRequest productRegisterRequest) {
+    public Long save(final Long userId, final ProductRegisterRequest productRegisterRequest) {
         final User user = userRepository.findById(userId).orElseThrow();
         final Product product = Product.of(user, productRegisterRequest);
         productRepository.save(product);

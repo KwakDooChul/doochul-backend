@@ -35,7 +35,12 @@ public class Product extends BaseEntity {
 
     private Integer count;
 
-    private Product(Long id, String name, ProductType type, User teacher, Integer count) {
+    private Product(final Long id,
+                    final String name,
+                    final ProductType type,
+                    final User teacher,
+                    final Integer count
+    ) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -43,7 +48,7 @@ public class Product extends BaseEntity {
         this.count = count;
     }
 
-    public static Product of(User user, ProductRegisterRequest productRegisterRequest) {
+    public static Product of(final User user, final ProductRegisterRequest productRegisterRequest) {
         return new Product(null, productRegisterRequest.name(), productRegisterRequest.type(), user,
                 productRegisterRequest.count());
     }

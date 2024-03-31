@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.doochul.domain.BaseEntity;
 
 @Entity
@@ -36,13 +37,14 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Identity identity;
 
-    public User(
-            final String name,
-            final String deviceToken,
-            final String passWord,
-            final Gender gender,
-            final Identity identity
+    public User(final Long id,
+                final String name,
+                final String deviceToken,
+                final String passWord,
+                final Gender gender,
+                final Identity identity
     ) {
+        this.id = id;
         this.name = name;
         this.deviceToken = deviceToken;
         this.passWord = passWord;

@@ -1,12 +1,9 @@
 package org.doochul.ui;
 
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.ProductService;
-import org.doochul.ui.dto.ProductResponse;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.doochul.resolver.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +14,8 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/{userId}")
-    private ResponseEntity<List<ProductResponse>> findMemberShipsById(@PathVariable Long userId) {
-        List<ProductResponse> response = productService.findMemberShipsById(userId);
-        return ResponseEntity.ok(response);
+    @PostMapping("/token")
+    public String postToken(@AuthenticationPrincipal Long id) {
+        return "안녕" + id;
     }
 }

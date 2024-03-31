@@ -1,4 +1,6 @@
-package org.doochul.service;
+package org.doochul.domain.lesson;
+
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,6 +20,7 @@ public enum LessonStatus {
             (name, time, teacher) -> formatToLocalTime(time) + " " + name + "님 " + teacher + " 강사님의 수업을 철회했습니다."),
     END_LESSON("수업 종료", (name, time, teacher) -> teacher + " 강사님의 수업이 모두 종료되었습니다.");
 
+    @Getter
     private final String title;
     private final LessonStatusMessage message;
 
@@ -28,10 +31,6 @@ public enum LessonStatus {
 
     private static String formatToLocalTime(LocalDateTime time) {
         return time.format(DateTimeFormatter.ofPattern("a HH시 mm분"));
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public String getMessage(String name, LocalDateTime time, String teacher) {

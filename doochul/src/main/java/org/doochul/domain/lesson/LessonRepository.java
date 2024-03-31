@@ -11,4 +11,5 @@ public interface LessonRepository extends JpaRepository<Lesson, Long> {
     }
 
     List<Lesson> findByStartedAtBefore(final LocalDateTime currentServerTime);
+    List<Lesson> findOngoingLessons(final LocalDateTime now);
 }

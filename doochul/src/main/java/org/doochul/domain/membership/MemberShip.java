@@ -23,7 +23,7 @@ public class MemberShip extends BaseEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "student_id")
     private User student;
 
     @ManyToOne
@@ -31,6 +31,12 @@ public class MemberShip extends BaseEntity {
     private Product product;
 
     private Integer remainingCount;
+
+    public MemberShip(final User student, final Product product, final Integer remainingCount) {
+        this.student = student;
+        this.product = product;
+        this.remainingCount = remainingCount;
+    }
 
     public void decreasedCount() {
         validateMinRemainingCount();

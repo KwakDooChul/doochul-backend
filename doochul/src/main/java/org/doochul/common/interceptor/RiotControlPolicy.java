@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @Getter
 @RequiredArgsConstructor
-public enum RatePlan {
+public enum RiotControlPolicy {
 
     TEST("test", Duration.ofMinutes(60)) {
         @Override
@@ -47,17 +47,17 @@ public enum RatePlan {
     private final String planName;
     private final Duration refillTime;
 
-    public static RatePlan from(final String targetPlan) {
-        return Arrays.stream(RatePlan.values())
-                .filter(ratePlan -> ratePlan.getPlanName().equals(targetPlan))
+    public static RiotControlPolicy from(final String targetPlan) {
+        return Arrays.stream(RiotControlPolicy.values())
+                .filter(riotControlPolicy -> riotControlPolicy.getPlanName().equals(targetPlan))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("정의되지 않은 정책입니다."));
     }
 
     public static Bandwidth resolvePlan(final String targetPlan) {
-        return Arrays.stream(RatePlan.values())
-                .filter(ratePlan -> ratePlan.getPlanName().equals(targetPlan))
-                .map(RatePlan::getLimit)
+        return Arrays.stream(RiotControlPolicy.values())
+                .filter(riotControlPolicy -> riotControlPolicy.getPlanName().equals(targetPlan))
+                .map(RiotControlPolicy::getLimit)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("정의되지 않은 정책입니다."));
     }

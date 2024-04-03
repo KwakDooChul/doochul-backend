@@ -26,11 +26,11 @@ class APIRateLimiterInterceptorTest {
     void setUp() {
         final RedisClient redisClient = RedisClient.create(RedisURI.create("redis://localhost:6379"));
         bucketConfiguration = BucketConfiguration.builder()
-                .addLimit(RatePlan.TEST.getLimit())
+                .addLimit(RiotControlPolicy.TEST.getLimit())
                 .build();
         lettuceBasedProxyManager = LettuceBasedProxyManager.builderFor(redisClient)
                 .withExpirationStrategy(ExpirationAfterWriteStrategy.
-                        basedOnTimeForRefillingBucketUpToMax(RatePlan.TEST.getRefillTime()))
+                        basedOnTimeForRefillingBucketUpToMax(RiotControlPolicy.TEST.getRefillTime()))
                 .build();
         interceptor = new APIRateLimiterInterceptor("test", bucketConfiguration, lettuceBasedProxyManager);
     }

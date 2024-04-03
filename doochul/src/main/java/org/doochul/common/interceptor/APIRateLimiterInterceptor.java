@@ -19,7 +19,7 @@ public class APIRateLimiterInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(final HttpServletRequest request, HttpServletResponse response, Object handler) {
-        return checkBucketCounter(RatePlan.from(bucketPlan).getPlanName());
+        return checkBucketCounter(RiotControlPolicy.from(bucketPlan).getPlanName());
     }
 
     private boolean checkBucketCounter(final String key) {

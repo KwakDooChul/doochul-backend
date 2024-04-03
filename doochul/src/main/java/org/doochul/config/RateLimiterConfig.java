@@ -6,7 +6,7 @@ import io.github.bucket4j.redis.lettuce.cas.LettuceBasedProxyManager;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 import lombok.extern.slf4j.Slf4j;
-import org.doochul.common.interceptor.RatePlan;
+import org.doochul.common.interceptor.RiotControlPolicy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,14 +41,14 @@ public class RateLimiterConfig implements WebMvcConfigurer {
         return LettuceBasedProxyManager
                 .builderFor(redisClient())
                 .withExpirationStrategy(ExpirationAfterWriteStrategy.
-                        basedOnTimeForRefillingBucketUpToMax(RatePlan.from(bucketPlan).getRefillTime()))
+                        basedOnTimeForRefillingBucketUpToMax(RiotControlPolicy.from(bucketPlan).getRefillTime()))
                 .build();
     }
 
     @Bean
     public BucketConfiguration bucketConfiguration() {
         return BucketConfiguration.builder()
-                .addLimit(RatePlan.resolvePlan(bucketPlan))
+                .addLimit(RiotControlPolicy.resolvePlan(bucketPlan))
                 .build();
     }
 }

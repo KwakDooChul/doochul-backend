@@ -10,16 +10,25 @@ import org.doochul.common.interceptor.RatePlan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Slf4j
 @Configuration
-public class RateLimiterConfig {
+public class RateLimiterConfig implements WebMvcConfigurer {
     @Value("${spring.data.redis.host}")
     private String redisHost;
     @Value("${spring.data.redis.port}")
     private int redisPort;
     @Value("${bucket.plan}")
     private String bucketPlan;
+
+    //TODO: RIOT API구현하면 추가해주기
+//    @Override
+//    public void addInterceptors(final InterceptorRegistry registry) {
+//        registry.addInterceptor(new APIRateLimiterInterceptor(bucketPlan, bucketConfiguration(), lettuceBasedProxyManager()))
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/login/kakao", "/oauth/kakao");
+//    }
 
     @Bean
     public RedisClient redisClient() {

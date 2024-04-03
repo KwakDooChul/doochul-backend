@@ -1,4 +1,4 @@
-package org.doochul.common;
+package org.doochul.common.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Objects;

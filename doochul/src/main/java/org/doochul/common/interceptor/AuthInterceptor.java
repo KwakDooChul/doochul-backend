@@ -1,4 +1,4 @@
-package org.doochul.common;
+package org.doochul.common.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +12,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     private final JwtProvider jwtProvider;
 
+    @Override
     public boolean preHandle(final HttpServletRequest request, HttpServletResponse response, Object handler) {
         if (CorsUtils.isPreFlightRequest(request)) {
             return true;

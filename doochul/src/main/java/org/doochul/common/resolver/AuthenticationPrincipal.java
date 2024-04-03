@@ -1,4 +1,4 @@
-package org.doochul.resolver;
+package org.doochul.common.resolver;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

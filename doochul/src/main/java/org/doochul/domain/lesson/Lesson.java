@@ -6,7 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
 import java.time.LocalDateTime;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,8 +30,8 @@ public class Lesson extends BaseEntity {
     private MemberShip memberShip;
 
     @ManyToOne
-    @JoinColumn(name = "student_id")
-    private User student;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
@@ -41,18 +43,17 @@ public class Lesson extends BaseEntity {
 
     private String record;
 
-    public Lesson(
-            final MemberShip memberShip,
-            final User student,
-            final User teacher,
-            final LocalDateTime startedAt,
-            final LocalDateTime endedAt
-    ) {
-        this.memberShip = memberShip;
-        this.student = student;
+    private Lesson(Long id, User user, User teacher, MemberShip memberShip, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
+        this.id = id;
+        this.user = user;
         this.teacher = teacher;
+        this.memberShip = memberShip;
         this.startedAt = startedAt;
         this.endedAt = endedAt;
-        this.record = null;
+        this.record = record;
+    }
+
+    public static Lesson of(User user, User teacher, MemberShip memberShip, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
+        return new Lesson(null, user, teacher,memberShip, startedAt, endedAt, record);
     }
 }

@@ -1,7 +1,7 @@
 package org.doochul.chatting;
 
+import org.doochul.chatting.chat.ChatMessage;
 import org.doochul.chatting.pubsub.RedisPublisher;
-import org.doochul.chatting.pubsub.RedisSubscriber;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

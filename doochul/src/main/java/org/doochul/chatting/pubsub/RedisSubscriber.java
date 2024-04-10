@@ -3,7 +3,7 @@ package org.doochul.chatting.pubsub;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.doochul.chatting.ChatMessage;
+import org.doochul.chatting.chat.ChatMessage;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.core.RedisTemplate;

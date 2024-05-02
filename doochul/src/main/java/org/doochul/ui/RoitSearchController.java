@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-public class RoitSearchController {
+public class RiotSearchController {
 
     private final AccountService accountService;
     private final SummonerService summonerService;

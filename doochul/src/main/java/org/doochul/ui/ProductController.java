@@ -29,9 +29,15 @@ public class ProductController {
         return ResponseEntity.created(URI.create("/product/" + productId)).build();
     }
 
-    @GetMapping("/products")
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<ProductResponse> findProduct(@PathVariable final Long productId) {
+        final ProductResponse response = productService.findProduct(productId);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/products/find")
     public ResponseEntity<List<ProductResponse>> findProducts() {
-        final List<ProductResponse> response = productService.findByProducts();
+        final List<ProductResponse> response = productService.findProducts();
         return ResponseEntity.ok(response);
     }
 

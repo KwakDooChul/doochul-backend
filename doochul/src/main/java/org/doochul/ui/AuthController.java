@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -19,12 +20,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @GetMapping("/login/kakao")
-    public String kakaoLogin() {
-        return "kakaoLogin";
-    }
-
-    @GetMapping("/oauth/kakao")
+    @PostMapping("/oauth/kakao")
     @ResponseBody
     public ResponseEntity<String> login(final LoginRequest loginRequest, HttpServletResponse response) {
         final String jwtToken = authService.login(loginRequest);

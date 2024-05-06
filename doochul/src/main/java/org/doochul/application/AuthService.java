@@ -29,11 +29,7 @@ public class AuthService {
         final User user = userRepository.findBySocialIdAndSocialType(userInfo.id(), request.socialType())
                 .orElseGet(() -> initUser(userInfo, userInfo.id()));
 
-        final String jwtToken = jwtProvider.createToken(user.getId());
-
-        log.info("User 로그인 성공: {} ", user);
-
-        return jwtToken;
+        return jwtProvider.createToken(user.getId());
     }
 
     private User initUser(final KakaoUserInfoResponse userInfo, final Long socialId) {

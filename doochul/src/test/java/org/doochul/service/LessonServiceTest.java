@@ -1,6 +1,5 @@
 package org.doochul.service;
 
-import org.doochul.application.RedisService;
 import org.doochul.domain.product.Product;
 import org.doochul.domain.product.ProductRepository;
 import org.doochul.domain.product.ProductType;

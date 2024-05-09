@@ -27,4 +27,11 @@ public class LessonController {
         final List<LessonResponse> response = lessonService.findByLessons();
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/update/{lessonId}")
+    public Long update(@PathVariable final Long lessonId, @RequestBody final LessonRequest lessonRequest) {
+        return lessonService.update(lessonId, lessonRequest);
+
+    }
 }
+

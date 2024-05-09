@@ -38,4 +38,11 @@ public class LessonService {
         return LessonResponse.to(lessons);
     }
 
+    @Transactional
+    public Long update(final Long lessonId, final LessonRequest lessonRequest) {
+        final Lesson lesson = lessonRepository.findById(lessonId).orElseThrow();
+        lesson.update(lessonRequest.startedAt(), lessonRequest.endedAt(),lessonRequest.record());
+        return lessonId;
+    }
+
 }

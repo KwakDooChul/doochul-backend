@@ -54,6 +54,12 @@ public class Lesson extends BaseEntity {
     }
 
     public static Lesson of(User user, User teacher, MemberShip memberShip, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
-        return new Lesson(null, user, teacher,memberShip, startedAt, endedAt, record);
+        return new Lesson(null, user, teacher, memberShip, startedAt, endedAt, record);
+    }
+
+    public void update(LocalDateTime startedAt, LocalDateTime endedAt, String record) {
+        this.startedAt = startedAt;
+        this.endedAt = endedAt;
+        this.record = record;
     }
 }

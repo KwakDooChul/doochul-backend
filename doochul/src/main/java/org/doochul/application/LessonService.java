@@ -5,12 +5,10 @@ import org.doochul.domain.lesson.Lesson;
 import org.doochul.domain.lesson.LessonRepository;
 import org.doochul.domain.membership.MemberShip;
 import org.doochul.domain.membership.MemberShipRepository;
-import org.doochul.domain.product.Product;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.doochul.ui.dto.LessonRequest;
 import org.doochul.ui.dto.LessonResponse;
-import org.doochul.ui.dto.ProductResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

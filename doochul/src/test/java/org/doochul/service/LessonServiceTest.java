@@ -1,7 +1,6 @@
 package org.doochul.service;
 
 import org.doochul.application.RedisService;
-import org.doochul.domain.membership.MemberShip;
 import org.doochul.domain.membership.MemberShipRepository;
 import org.doochul.domain.product.Product;
 import org.doochul.domain.product.ProductRepository;
@@ -14,21 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.time.Duration;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.times;
-
 @SpringBootTest
 public class LessonServiceTest {
-
-    @MockBean
-    private MemberShipRepository memberShipRepository;
 
     @Autowired
     private ProductRepository productRepository;

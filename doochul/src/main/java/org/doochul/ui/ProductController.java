@@ -24,12 +24,13 @@ public class ProductController {
     @PostMapping("/product/register")
     public ResponseEntity<Long> save(
             @AuthenticationPrincipal final Long userId,
-            @RequestBody final ProductRegisterRequest productRegisterRequest) {
+            @RequestBody final ProductRegisterRequest productRegisterRequest
+    ) {
         final Long productId = productService.save(userId, productRegisterRequest);
         return ResponseEntity.created(URI.create("/product/" + productId)).build();
     }
 
-    @GetMapping("/product/{productId}")
+    @GetMapping("/products/{productId}")
     public ResponseEntity<ProductResponse> findProduct(@PathVariable final Long productId) {
         final ProductResponse response = productService.findProduct(productId);
         return ResponseEntity.ok(response);

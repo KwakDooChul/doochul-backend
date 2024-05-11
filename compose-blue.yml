@@ -1,0 +1,10 @@
+version: "3"
+services:
+  backend-blue:
+    image: ${DOCKER_USERNAME}/kwak-doo-chul
+    volumes:
+      - /home/ubuntu/logs/:/logs/
+networks:
+  default:
+    name: kwakdoochul-network
+    external: true

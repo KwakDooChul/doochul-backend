@@ -3,6 +3,8 @@ package org.doochul.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+
+import jakarta.transaction.Transactional;
 import org.doochul.domain.product.ProductType;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
@@ -24,11 +26,13 @@ class ProductServiceTest {
 
     @BeforeEach
     void setUp() {
-        User user = User.of("123", "1234");
+
+        final User user = User.of("123", "1234");
         userRepository.save(user);
     }
 
     @Test
+    @Transactional
     void product_save() {
         //given
         productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));
@@ -39,6 +43,7 @@ class ProductServiceTest {
     }
 
     @Test
+    @Transactional
     void product_detail() {
         //given
         productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));
@@ -50,6 +55,7 @@ class ProductServiceTest {
     }
 
     @Test
+    @Transactional
     void product_findProducts() {
         //given
         productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));
@@ -57,12 +63,13 @@ class ProductServiceTest {
 
         //when
         List<ProductResponse> products = productService.findProducts();
-
+        products.forEach(it -> System.out.println(it.name()));
         //then
         assertEquals(products.size(),2);
     }
 
     @Test
+    @Transactional
     void product_delete() {
         //given
         productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));

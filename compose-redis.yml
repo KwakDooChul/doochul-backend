@@ -1,0 +1,12 @@
+version: "3"
+services:
+  nginx:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    volumes:
+      - /home/ubuntu/redis-logs/:/var/log/redis/
+networks:
+  default:
+    name: kwakdoochul-network
+    external: true

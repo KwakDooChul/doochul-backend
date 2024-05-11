@@ -31,7 +31,7 @@ sleep 10
 INFRA_PROFILE=$1
 
 # 도커 네트워크 이름
-NETWORK_NAME="kwakdoochul-network"
+NETWORK_NAME="kwakdoochul-network"
 
 # 도커 네트워크가 존재하는지 확인
 sudo docker network inspect $NETWORK_NAME >/dev/null 2>&1

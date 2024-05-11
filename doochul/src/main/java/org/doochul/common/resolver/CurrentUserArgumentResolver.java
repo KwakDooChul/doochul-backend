@@ -1,9 +1,9 @@
-package org.doochul.resolver;
+package org.doochul.common.resolver;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.doochul.common.AuthorizationExtractor;
+import org.doochul.common.interceptor.AuthorizationExtractor;
 import org.doochul.domain.oauth.jwt.JwtProvider;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;

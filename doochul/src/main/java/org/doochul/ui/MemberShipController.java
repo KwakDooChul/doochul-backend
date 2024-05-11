@@ -3,7 +3,7 @@ package org.doochul.ui;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.MemberShipService;
-import org.doochul.resolver.AuthenticationPrincipal;
+import org.doochul.common.resolver.AuthenticationPrincipal;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.ProductService;
-import org.doochul.resolver.AuthenticationPrincipal;
+import org.doochul.common.resolver.AuthenticationPrincipal;
 import org.doochul.ui.dto.ProductRegisterRequest;
 import org.doochul.ui.dto.ProductResponse;
 import org.springframework.http.ResponseEntity;

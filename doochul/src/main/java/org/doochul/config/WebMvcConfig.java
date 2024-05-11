@@ -1,16 +1,17 @@
 package org.doochul.config;
 
-import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.doochul.common.AuthInterceptor;
+import org.doochul.common.interceptor.AuthInterceptor;
+import org.doochul.common.resolver.CurrentUserArgumentResolver;
 import org.doochul.domain.oauth.jwt.JwtProvider;
-import org.doochul.resolver.CurrentUserArgumentResolver;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor

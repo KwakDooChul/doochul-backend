@@ -19,15 +19,24 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
 
-    public List<ProductResponse> findByProducts() {
-        final List<Product> products = productRepository.findAll();
-        return ProductResponse.to(products);
-    }
-
     public Long save(final Long userId, final ProductRegisterRequest productRegisterRequest) {
         final User user = userRepository.findById(userId).orElseThrow();
         final Product product = Product.of(user, productRegisterRequest);
         productRepository.save(product);
         return product.getId();
+    }
+
+    public ProductResponse findProduct(final Long productId) {
+        final Product product = productRepository.getById(productId);
+        return ProductResponse.from(product);
+    }
+
+    public List<ProductResponse> findProducts() {
+        final List<Product> products = productRepository.findAll();
+        return ProductResponse.to(products);
+    }
+
+    public void deleteProduct(final Long productId) {
+        productRepository.deleteById(productId);
     }
 }

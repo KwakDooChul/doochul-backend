@@ -31,7 +31,7 @@ sleep 10
 INFRA_PROFILE=$1
 
 # 도커 네트워크 이름
-NETWORK_NAME="donggle-network"
+NETWORK_NAME="kwakdoochul-network"
 
 # 도커 네트워크가 존재하는지 확인
 sudo docker network inspect $NETWORK_NAME >/dev/null 2>&1
@@ -56,7 +56,7 @@ export AFTER_COMPOSE_COLOR
 EXIST_AFTER=$(sudo docker compose -p compose-${AFTER_COMPOSE_COLOR} -f compose-${AFTER_COMPOSE_COLOR}.yml ps | grep Up)
 if [ -n "$EXIST_AFTER" ]; then
   # nginx.config를 컨테이너에 맞게 변경해주고 reload 한다
-  envsubst '${AFTER_COMPOSE_COLOR}' < conf-${INFRA_PROFILE}/nginx.template > conf-${INFRA_PROFILE}/nginx.conf
+  envsubst '${AFTER_COMPOSE_COLOR}' < conf/nginx.template > conf/nginx.conf
   sudo docker compose -f compose-nginx.yml exec nginx nginx -s reload
  
   # 이전 컨테이너 종료

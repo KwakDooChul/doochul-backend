@@ -1,9 +1,6 @@
 package org.doochul.domain.lesson;
 
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

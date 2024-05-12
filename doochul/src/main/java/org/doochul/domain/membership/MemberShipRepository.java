@@ -1,6 +1,5 @@
 package org.doochul.domain.membership;
 
-import org.doochul.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

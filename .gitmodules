@@ -1,3 +1,6 @@
 [submodule "doochul/src/main/resources/security1"]
 	path = doochul/src/main/resources/security1
 	url = https://github.com/KwakDooChul/security.git
+[submodule "doochulsecurity"]
+	path = doochulsecurity
+	url = https://github.com/KwakDooChul/security.git

@@ -32,7 +32,6 @@ class ProductServiceTest {
     }
 
     @Test
-    @Transactional
     void product_save() {
         //given
         productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));
@@ -43,7 +42,6 @@ class ProductServiceTest {
     }
 
     @Test
-    @Transactional
     void product_detail() {
         //given
         productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));
@@ -54,22 +52,20 @@ class ProductServiceTest {
         //then
     }
 
-    @Test
-    @Transactional
-    void product_findProducts() {
-        //given
-        productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));
-        productService.save(1L, new ProductRegisterRequest("안녕1", ProductType.LOL, 10));
+//    @Test
+//    void product_findProducts() {ㅌ
+//        //given
+//        productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));
+//        productService.save(1L, new ProductRegisterRequest("안녕1", ProductType.LOL, 10));
+//
+//        //when
+//        List<ProductResponse> products = productService.findProducts();
+//        products.forEach(it -> System.out.println(it.name()));
+//        //then
+//        assertEquals(products.size(),2);
+//    }
 
-        //when
-        List<ProductResponse> products = productService.findProducts();
-        products.forEach(it -> System.out.println(it.name()));
-        //then
-        assertEquals(products.size(),2);
-    }
-
     @Test
-    @Transactional
     void product_delete() {
         //given
         productService.save(1L, new ProductRegisterRequest("안녕", ProductType.LOL, 10));

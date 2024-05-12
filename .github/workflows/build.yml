@@ -65,8 +65,8 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
-        context: ./backend
-        file: ./backend/Dockerfile-dev
+        context: ./doochul
+        file: ./doochul/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/kwak-doo-chul:latest
         platforms: linux/amd64

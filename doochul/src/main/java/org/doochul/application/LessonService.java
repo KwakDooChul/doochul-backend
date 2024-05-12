@@ -3,11 +3,13 @@ package org.doochul.application;
 import lombok.RequiredArgsConstructor;
 import org.doochul.domain.lesson.Lesson;
 import org.doochul.domain.lesson.LessonRepository;
+import org.doochul.domain.lesson.LessonTime;
 import org.doochul.domain.membership.MemberShip;
 import org.doochul.domain.membership.MemberShipRepository;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
-import org.doochul.ui.dto.LessonRequest;
+import org.doochul.ui.dto.LessonRecordRequest;
+import org.doochul.ui.dto.LessonTimeRequest;
 import org.doochul.ui.dto.LessonResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,11 +25,11 @@ public class LessonService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Long save(final Long userId, final Long membershipId, final LessonRequest lessonRequest) {
-        final User user = userRepository.findById(userId).orElseThrow();
-        final MemberShip memberShip = memberShipRepository.findById(membershipId).orElseThrow();
-
-        return lessonRepository.save(Lesson.of(user, memberShip.getProduct().getTeacher(), memberShip, lessonRequest.startedAt(), lessonRequest.endedAt(), lessonRequest.record())).getId();
+    public Long save(final Long userId, final Long membershipId, final LessonTimeRequest lessonTimeRequest, final LessonRecordRequest lessonRecordRequest) {
+        final User user = userRepository.getById(userId);
+        final MemberShip memberShip = memberShipRepository.getById(membershipId);
+        final LessonTime lessonTime = LessonTime.of(lessonTimeRequest.startedAt(), lessonTimeRequest.endedAt());
+        return lessonRepository.save(Lesson.of(user, memberShip, lessonTime, lessonRecordRequest.record())).getId();
     }
 
     @Transactional(readOnly = true)
@@ -37,10 +39,14 @@ public class LessonService {
     }
 
     @Transactional
-    public Long update(final Long lessonId, final LessonRequest lessonRequest) {
+    public void update(final Long lessonId, final LessonTimeRequest lessonTimeRequest, final LessonRecordRequest lessonRecordRequest) {
         final Lesson lesson = lessonRepository.findById(lessonId).orElseThrow();
-        lesson.update(lessonRequest.startedAt(), lessonRequest.endedAt(),lessonRequest.record());
-        return lessonId;
+        final LessonTime lessonTime = LessonTime.of(lessonTimeRequest.startedAt(), lessonTimeRequest.endedAt());
+        lesson.update(lessonTime, lessonRecordRequest.record());
     }
 
+    @Transactional
+    public void delete(final Long lessonId) {
+        lessonRepository.deleteById(lessonId);
+    }
 }

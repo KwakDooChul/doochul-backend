@@ -2,10 +2,8 @@ package org.doochul.ui.dto;
 
 import java.time.LocalDateTime;
 
-public record LessonRequest(
+public record LessonTimeRequest(
         LocalDateTime startedAt,
-        LocalDateTime endedAt,
-        String record
+        LocalDateTime endedAt
 ) {
-
 }

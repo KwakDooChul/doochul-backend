@@ -1,11 +1,6 @@
 package org.doochul.domain.lesson;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -26,10 +21,6 @@ public class Lesson extends BaseEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "membership_id")
-    private MemberShip memberShip;
-
-    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -37,29 +28,30 @@ public class Lesson extends BaseEntity {
     @JoinColumn(name = "teacher_id")
     private User teacher;
 
-    private LocalDateTime startedAt;
+    @ManyToOne
+    @JoinColumn(name = "membership_id")
+    private MemberShip memberShip;
 
-    private LocalDateTime endedAt;
+    @Embedded
+    private LessonTime lessonTime;
 
     private String record;
 
-    private Lesson(Long id, User user, User teacher, MemberShip memberShip, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
+    public Lesson(final Long id, final User user, final User teacher, final MemberShip memberShip, final LessonTime lessonTime, final String record) {
         this.id = id;
         this.user = user;
         this.teacher = teacher;
         this.memberShip = memberShip;
-        this.startedAt = startedAt;
-        this.endedAt = endedAt;
+        this.lessonTime = lessonTime;
         this.record = record;
     }
 
-    public static Lesson of(User user, User teacher, MemberShip memberShip, LocalDateTime startedAt, LocalDateTime endedAt, String record) {
-        return new Lesson(null, user, teacher, memberShip, startedAt, endedAt, record);
+    public static Lesson of(final User user, final MemberShip memberShip, final LessonTime lessonTime, final String record) {
+        return new Lesson(null, user, memberShip.getTeacher(), memberShip, lessonTime, record);
     }
 
-    public void update(LocalDateTime startedAt, LocalDateTime endedAt, String record) {
-        this.startedAt = startedAt;
-        this.endedAt = endedAt;
+    public void update(final LessonTime lessonTime, final String record) {
+        this.lessonTime = lessonTime;
         this.record = record;
     }
 }

@@ -16,6 +16,8 @@ jobs:
         run: |
           touch .env
           echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> .env
+          echo "SPRING_PROFILES_ACTIVE=${{ vars.SPRING_PROFILES_ACTIVE_DEVELOPMENT }}" >> .env
+
       ## deploy to production
       - name: Deploy to prod
         run: |

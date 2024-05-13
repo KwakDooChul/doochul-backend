@@ -1,3 +1,3 @@
-[submodule "security"]
-	path = security
+[submodule "doochul/src/main/resources/config"]
+	path = doochul/src/main/resources/config
 	url = https://github.com/KwakDooChul/security.git

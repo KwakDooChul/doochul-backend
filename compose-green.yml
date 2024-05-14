@@ -6,6 +6,8 @@ services:
       - /home/ubuntu/logs/:/logs/
     environment:
       - SPRING_PROFILES_ACTIVE
+    ports:
+      - "8081:8080"
 networks:
   default:
     name: kwakdoochul-network

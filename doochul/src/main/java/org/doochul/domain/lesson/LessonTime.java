@@ -1,12 +1,14 @@
 package org.doochul.domain.lesson;
 
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Embeddable
 @NoArgsConstructor
+@Getter
 public class LessonTime {
 
     private LocalDateTime startedAt;

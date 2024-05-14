@@ -33,9 +33,10 @@ public class LessonService {
     }
 
     @Transactional(readOnly = true)
-    public List<LessonResponse> findByLessons() {
-        final List<Lesson> lessons = lessonRepository.findAll();
-        return LessonResponse.to(lessons);
+    public List<LessonResponse> findByLessons(final Long userId) {
+        final User user = userRepository.getById(userId);
+        final List<Lesson> lessons = lessonRepository.findByUser(user);
+        return LessonResponse.from(lessons);
     }
 
     @Transactional

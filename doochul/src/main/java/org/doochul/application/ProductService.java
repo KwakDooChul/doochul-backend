@@ -33,7 +33,7 @@ public class ProductService {
 
     public List<ProductResponse> findProducts() {
         final List<Product> products = productRepository.findAll();
-        return ProductResponse.to(products);
+        return ProductResponse.from(products);
     }
 
     public void deleteProduct(final Long productId) {

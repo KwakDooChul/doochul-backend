@@ -52,4 +52,8 @@ public class Product extends BaseEntity {
         return new Product(null, productRegisterRequest.name(), productRegisterRequest.type(), user,
                 productRegisterRequest.count());
     }
+
+    public String getTeacherName() {
+        return teacher.getName();
+    }
 }

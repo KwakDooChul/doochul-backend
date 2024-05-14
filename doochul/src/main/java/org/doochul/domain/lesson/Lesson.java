@@ -1,6 +1,7 @@
 package org.doochul.domain.lesson;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,5 +51,21 @@ public class Lesson extends BaseEntity {
     public void update(final LessonTime lessonTime, final String record) {
         this.lessonTime = lessonTime;
         this.record = record;
+    }
+
+    public String getUserName() {
+        return user.getName();
+    }
+
+    public String getTeacherName() {
+        return teacher.getName();
+    }
+
+    public LocalDateTime getStartedTime() {
+        return lessonTime.getStartedAt();
+    }
+
+    public LocalDateTime getEndedTime() {
+        return lessonTime.getEndedAt();
     }
 }

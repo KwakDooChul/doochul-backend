@@ -36,7 +36,7 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/products/find")
+    @GetMapping("/products")
     public ResponseEntity<List<ProductResponse>> findProducts() {
         final List<ProductResponse> response = productService.findProducts();
         return ResponseEntity.ok(response);

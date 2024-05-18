@@ -57,4 +57,8 @@ public class MemberShip extends BaseEntity {
             throw new IllegalArgumentException("안돼");
         }
     }
+
+    public User getTeacher() {
+        return product.getTeacher();
+    }
 }

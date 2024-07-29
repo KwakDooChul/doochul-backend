@@ -19,12 +19,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     private final JwtProvider jwtProvider;
 
-    @Override
-    public void addInterceptors(final InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor(jwtProvider))
-                .addPathPatterns("/**")
-                .excludePathPatterns("/login/kakao", "/oauth/kakao");
-    }
+//    @Override
+//    public void addInterceptors(final InterceptorRegistry registry) {
+//        registry.addInterceptor(new AuthInterceptor(jwtProvider))
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/login/kakao", "/oauth/kakao");
+//    }
 
     @Override
     public void addCorsMappings(final CorsRegistry registry) {
@@ -36,8 +36,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new CurrentUserArgumentResolver(jwtProvider));
-    }
+//    @Override
+//    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+//        argumentResolvers.add(new CurrentUserArgumentResolver(jwtProvider));
+//    }
 }

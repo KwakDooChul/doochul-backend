@@ -8,20 +8,17 @@ import org.doochul.application.AuthService;
 import org.doochul.ui.dto.LoginRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @Slf4j
 public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/oauth/kakao")
-    @ResponseBody
+    @PostMapping("/oauth/{socialType}")
     public ResponseEntity<String> login(final LoginRequest loginRequest, HttpServletResponse response) {
         final String jwtToken = authService.login(loginRequest);
 

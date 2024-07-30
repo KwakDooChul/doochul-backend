@@ -32,7 +32,7 @@ public class NotificationService {
                 Letter.of(student.getDeviceToken(),
                         student.getName(),
                         teacher.getName(),
-                        lesson.getStartedAt(),
+                        lesson.getStartedTime(),
                         SCHEDULED_LESSON));
     }
 
@@ -41,7 +41,7 @@ public class NotificationService {
                 Letter.of(event.student().getDeviceToken(),
                         event.student().getName(),
                         event.teacher().getName(),
-                        event.lesson().getStartedAt(),
+                        event.lesson().getStartedTime(),
                         WITHDRAWN_LESSON));
     }
 

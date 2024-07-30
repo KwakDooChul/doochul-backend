@@ -47,7 +47,7 @@ public class User extends BaseEntity {
         this.name = name;
     }
 
-    public static User of(final Long socialId, String socialType, final String name) {
+    public static User of(final Long socialId, final String socialType, final String name) {
         return new User(Identity.GENERAL, socialId, socialType, name);
     }
 }

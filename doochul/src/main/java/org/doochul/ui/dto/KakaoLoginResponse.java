@@ -5,7 +5,7 @@ import org.doochul.domain.user.User;
 
 public record KakaoLoginResponse(
         Long userId,
-        String nickname,
+        String name,
         String profileImgUrl,
         Token accessToken
 ) {

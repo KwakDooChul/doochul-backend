@@ -20,10 +20,10 @@ public class ProductService {
     private final UserRepository userRepository;
 
     public Long save(final Long userId, final ProductRegisterRequest productRegisterRequest) {
-        final User user = userRepository.findById(userId).orElseThrow();
+        final User user = userRepository.getById(userId);
         final Product product = Product.of(user, productRegisterRequest);
-        productRepository.save(product);
-        return product.getId();
+        final Product savedId = productRepository.save(product);
+        return savedId.getId();
     }
 
     public ProductResponse findProduct(final Long productId) {
@@ -33,7 +33,6 @@ public class ProductService {
 
     public List<ProductResponse> findProducts() {
         final List<Product> products = productRepository.findAll();
-      
         return ProductResponse.from(products);
     }
 

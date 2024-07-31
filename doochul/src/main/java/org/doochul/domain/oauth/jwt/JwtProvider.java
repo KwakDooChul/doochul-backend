@@ -19,7 +19,7 @@ public class JwtProvider {
     private final SecretKey secretKey;
 
     public JwtProvider() {
-        this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256); // Default constructor for tests
+        this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     }
 
     public Token createToken(final Long id) {

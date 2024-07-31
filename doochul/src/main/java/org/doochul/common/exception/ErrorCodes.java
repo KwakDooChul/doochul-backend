@@ -9,6 +9,9 @@ public enum ErrorCodes {
     // 유저 관련
     USER_NOT_FOUND("올바르지 않은 유저 입니다.", 2000L),
 
+    // PT 관련
+    PRODUCT_NOT_FOUND("올바르지 않은 PT 입니다.", 3000L),
+
     BAD_REQUEST("BAD_REQUEST", 9404L),
     BAD_REQUEST_JSON_PARSE_ERROR("[BAD_REQUEST] JSON_PARSE_ERROR - 올바른 JSON 형식이 아님", 9405L),
     INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR", 9999L);

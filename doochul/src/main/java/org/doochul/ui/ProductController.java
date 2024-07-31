@@ -21,8 +21,8 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @PostMapping("/product/register")
-    public ResponseEntity<Long> save(
+    @PostMapping("/product")
+    public ResponseEntity<Long> addProduct(
             @AuthenticationPrincipal final Long userId,
             @RequestBody final ProductRegisterRequest productRegisterRequest
     ) {
@@ -30,14 +30,14 @@ public class ProductController {
         return ResponseEntity.created(URI.create("/product/" + productId)).build();
     }
 
-    @GetMapping("/products/{productId}")
-    public ResponseEntity<ProductResponse> findProduct(@PathVariable final Long productId) {
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<ProductResponse> readProduct(@PathVariable final Long productId) {
         final ProductResponse response = productService.findProduct(productId);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<ProductResponse>> findProducts() {
+    public ResponseEntity<List<ProductResponse>> readProducts() {
         final List<ProductResponse> response = productService.findProducts();
         return ResponseEntity.ok(response);
     }

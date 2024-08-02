@@ -7,12 +7,14 @@ EXIST_BLUE=$(sudo docker compose -p compose-blue -f compose-blue.yml ps | grep U
 if [ -n "$EXIST_BLUE" ]; then
     echo "Rolling back Blue to previous version"
     sudo docker compose -p compose-blue -f compose-blue.yml down
-    sudo docker run -d --name blue-rollback ${DOCKER_USERNAME}/kwak-doo-chul:rollback
+    sudo docker tag ${DOCKER_USERNAME}/kwak-doo-chul:rollback ${DOCKER_USERNAME}/kwak-doo-chul:latest
+    sudo docker compose -p compose-blue -f compose-blue.yml up -d
     AFTER_COMPOSE_COLOR="blue"
 else
     echo "Rolling back Green to previous version"
     sudo docker compose -p compose-green -f compose-green.yml down
-    sudo docker run -d --name green-rollback ${DOCKER_USERNAME}/kwak-doo-chul:rollback
+    sudo docker tag ${DOCKER_USERNAME}/kwak-doo-chul:rollback ${DOCKER_USERNAME}/kwak-doo-chul:latest
+    sudo docker compose -p compose-green -f compose-green.yml up -d
     AFTER_COMPOSE_COLOR="green"
 fi
 

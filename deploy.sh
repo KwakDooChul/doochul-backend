@@ -11,6 +11,15 @@ touch /tmp/deploy.lock
 
 # Blue 를 기준으로 현재 떠있는 컨테이너를 체크한다.
 EXIST_BLUE=$(sudo docker compose -p compose-blue -f compose-blue.yml ps | grep Up)
+
+# 현재 컨테이너를 커밋하여 이전 버전으로 저장
+if [ -z "$EXIST_BLUE" ]; then
+    echo "Committing current green container to rollback image"
+    sudo docker commit $(sudo docker compose -p compose-green -f compose-green.yml ps -q) ${DOCKER_USERNAME}/kwak-doo-chul:rollback
+else
+    echo "Committing current blue container to rollback image"
+    sudo docker commit $(sudo docker compose -p compose-blue -f compose-blue.yml ps -q) ${DOCKER_USERNAME}/kwak-doo-chul:rollback
+fi
  
 # 컨테이너 스위칭
 if [ -z "$EXIST_BLUE" ]; then

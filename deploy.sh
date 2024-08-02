@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 스크립트가 종료될 때 lock 파일을 삭제하도록 설정
+trap "rm -f /tmp/deploy.lock; exit" INT TERM EXIT
+
 # deploy.sh가 실행 중인지 확인
 if [ -e /tmp/deploy.lock ]; then
     echo "Deployment is in progress"

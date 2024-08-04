@@ -52,7 +52,7 @@ class ProductControllerTest {
         final Jwt accessToken = JwtSupporter.generateToken(userId);
         final ProductCreateRequest productCreateRequest = new ProductCreateRequest("안녕", ProductType.LOL, 10);
 
-        given(jwtProvider.getPayload(accessToken.getToken())).willReturn(userId);
+        given(jwtProvider.getPayload(accessToken.token())).willReturn(userId);
         given(productService.createProduct(userId, productCreateRequest))
                 .willReturn(productId);
 
@@ -60,7 +60,7 @@ class ProductControllerTest {
         //then
         mockMvc.perform(
                         post("/product")
-                                .header(AUTHORIZATION, "Bearer " + accessToken.getToken())
+                                .header(AUTHORIZATION, "Bearer " + accessToken.token())
                                 .contentType(APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(productCreateRequest))
                 )
@@ -82,14 +82,14 @@ class ProductControllerTest {
         final Jwt accessToken = JwtSupporter.generateToken(userId);
         final ProductResponse productResponse = new ProductResponse(productId, name, type, teacher, count);
 
-        given(jwtProvider.getPayload(accessToken.getToken())).willReturn(userId);
+        given(jwtProvider.getPayload(accessToken.token())).willReturn(userId);
         given(productService.findProduct(productId)).willReturn(productResponse);
 
         //when
         //then
         mockMvc.perform(
                         get("/product/" + productId)
-                                .header(AUTHORIZATION, "Bearer " + accessToken.getToken())
+                                .header(AUTHORIZATION, "Bearer " + accessToken.token())
                                 .contentType(APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
@@ -121,14 +121,14 @@ class ProductControllerTest {
         final ProductResponse productResponse2 = new ProductResponse(productId2, name2, type2, teacher2, count2);
         final List<ProductResponse> products = List.of(productResponse1, productResponse2);
 
-        given(jwtProvider.getPayload(accessToken.getToken())).willReturn(userId);
+        given(jwtProvider.getPayload(accessToken.token())).willReturn(userId);
         given(productService.findProducts()).willReturn(products);
 
         // when
         // then
         mockMvc.perform(
                         get("/products")
-                                .header(AUTHORIZATION, "Bearer " + accessToken.getToken())
+                                .header(AUTHORIZATION, "Bearer " + accessToken.token())
                                 .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
@@ -153,14 +153,14 @@ class ProductControllerTest {
 
         final Jwt accessToken = JwtSupporter.generateToken(userId);
 
-        given(jwtProvider.getPayload(accessToken.getToken())).willReturn(userId);
+        given(jwtProvider.getPayload(accessToken.token())).willReturn(userId);
         doNothing().when(productService).deleteProduct(productId);
 
         // when
         // then
         mockMvc.perform(
                         delete("/product/{productId}", productId)
-                                .header(AUTHORIZATION, "Bearer " + accessToken.getToken())
+                                .header(AUTHORIZATION, "Bearer " + accessToken.token())
                                 .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isNoContent());

@@ -46,7 +46,7 @@ class OAuthServiceTest {
 
     @DisplayName("성공 - 카카오 로그인 테스트")
     @Test
-    public void kakaoLogin() {
+    public void login() {
         //given
         final String authorizationCode = "auth_code";
         final String socialType = "kakao";
@@ -65,7 +65,7 @@ class OAuthServiceTest {
 
         final User existingUser = User.of(3411L, socialType, "카카오 유저 1");
 
-        Jwt token = new Jwt("jwt_token", LocalDateTime.now());
+        Jwt token = new Jwt("jwt_token");
 
         when(kakaoLoginTokenClient.getTokenInfo(authorizationCode)).thenReturn(kakaoTokenResponse);
         when(kakaoLoginUserClient.getUserInfo(kakaoTokenResponse.access_token())).thenReturn(kakaoUserInfoResponse);
@@ -74,11 +74,10 @@ class OAuthServiceTest {
         when(jwtProvider.createToken(existingUser.getId())).thenReturn(token);
 
         //when
-        LoginResponse response = oAuthService.kakaoLogin(request);
+        LoginResponse response = oAuthService.login(request);
 
         //then
-        assertThat(existingUser.getName()).isEqualTo(response.name());
-        assertThat(token.getToken()).isEqualTo(response.accessToken().getToken());
+        assertThat(token.token()).isEqualTo(response.accessToken().token());
 
         verify(kakaoLoginTokenClient, times(1)).getTokenInfo(authorizationCode);
         verify(kakaoLoginUserClient, times(1)).getUserInfo(kakaoTokenResponse.access_token());

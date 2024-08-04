@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.ProductService;
 import org.doochul.common.resolver.AuthenticationPrincipal;
-import org.doochul.ui.dto.ProductRegisterRequest;
+import org.doochul.ui.dto.ProductCreateRequest;
 import org.doochul.ui.dto.ProductResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,11 +22,11 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping("/product")
-    public ResponseEntity<Long> addProduct(
+    public ResponseEntity<Long> createProduct(
             @AuthenticationPrincipal final Long userId,
-            @RequestBody final ProductRegisterRequest productRegisterRequest
+            @RequestBody final ProductCreateRequest productCreateRequest
     ) {
-        final Long productId = productService.save(userId, productRegisterRequest);
+        final Long productId = productService.createProduct(userId, productCreateRequest);
         return ResponseEntity.created(URI.create("/product/" + productId)).build();
     }
 
@@ -41,6 +41,8 @@ public class ProductController {
         final List<ProductResponse> response = productService.findProducts();
         return ResponseEntity.ok(response);
     }
+
+    // Product 수정
 
     @DeleteMapping("/product/{productId}")
     public ResponseEntity<Void> deleteProduct(@PathVariable final Long productId) {

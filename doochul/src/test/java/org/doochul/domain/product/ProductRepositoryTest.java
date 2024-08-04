@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
-import org.doochul.ui.dto.ProductRegisterRequest;
+import org.doochul.ui.dto.ProductCreateRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ class ProductRepositoryTest {
         final User user = User.of(userId, socialId, socialType, name);
         final User savedUser = userRepository.save(user);
 
-        final ProductRegisterRequest productRegisterRequest = new ProductRegisterRequest("안녕", ProductType.LOL, 10);
-        final Product product = Product.of(1L, savedUser, productRegisterRequest);
+        final ProductCreateRequest productCreateRequest = new ProductCreateRequest("안녕", ProductType.LOL, 10);
+        final Product product = Product.of(1L, savedUser, productCreateRequest);
 
         final Product savedProduct = productRepository.save(product);
 

@@ -15,10 +15,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import org.doochul.application.ProductService;
 import org.doochul.domain.oauth.jwt.JwtProvider;
-import org.doochul.domain.oauth.token.Token;
+import org.doochul.domain.oauth.token.Jwt;
 import org.doochul.domain.product.ProductType;
 import org.doochul.support.JwtSupporter;
-import org.doochul.ui.dto.ProductRegisterRequest;
+import org.doochul.ui.dto.ProductCreateRequest;
 import org.doochul.ui.dto.ProductResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,11 +49,11 @@ class ProductControllerTest {
         //given
         final Long userId = 1L;
         final Long productId = 1L;
-        final Token accessToken = JwtSupporter.generateToken(userId);
-        final ProductRegisterRequest productRegisterRequest = new ProductRegisterRequest("안녕", ProductType.LOL, 10);
+        final Jwt accessToken = JwtSupporter.generateToken(userId);
+        final ProductCreateRequest productCreateRequest = new ProductCreateRequest("안녕", ProductType.LOL, 10);
 
         given(jwtProvider.getPayload(accessToken.getToken())).willReturn(userId);
-        given(productService.save(userId, productRegisterRequest))
+        given(productService.createProduct(userId, productCreateRequest))
                 .willReturn(productId);
 
         //when
@@ -62,7 +62,7 @@ class ProductControllerTest {
                         post("/product")
                                 .header(AUTHORIZATION, "Bearer " + accessToken.getToken())
                                 .contentType(APPLICATION_JSON)
-                                .content(objectMapper.writeValueAsString(productRegisterRequest))
+                                .content(objectMapper.writeValueAsString(productCreateRequest))
                 )
                 .andExpect(status().isCreated())
                 .andExpect(header().string("Location", "/product/" + productId));
@@ -79,7 +79,7 @@ class ProductControllerTest {
         final String teacher = "테스트 PT썜 이름";
         final int count = 10;
 
-        final Token accessToken = JwtSupporter.generateToken(userId);
+        final Jwt accessToken = JwtSupporter.generateToken(userId);
         final ProductResponse productResponse = new ProductResponse(productId, name, type, teacher, count);
 
         given(jwtProvider.getPayload(accessToken.getToken())).willReturn(userId);
@@ -116,7 +116,7 @@ class ProductControllerTest {
         final int count1 = 10;
         final int count2 = 20;
 
-        final Token accessToken = JwtSupporter.generateToken(userId);
+        final Jwt accessToken = JwtSupporter.generateToken(userId);
         final ProductResponse productResponse1 = new ProductResponse(productId1, name1, type1, teacher1, count1);
         final ProductResponse productResponse2 = new ProductResponse(productId2, name2, type2, teacher2, count2);
         final List<ProductResponse> products = List.of(productResponse1, productResponse2);
@@ -151,7 +151,7 @@ class ProductControllerTest {
         final Long userId = 1L;
         final Long productId = 1L;
 
-        final Token accessToken = JwtSupporter.generateToken(userId);
+        final Jwt accessToken = JwtSupporter.generateToken(userId);
 
         given(jwtProvider.getPayload(accessToken.getToken())).willReturn(userId);
         doNothing().when(productService).deleteProduct(productId);

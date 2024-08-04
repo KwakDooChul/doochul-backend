@@ -8,14 +8,14 @@ import static org.mockito.Mockito.when;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import org.doochul.domain.oauth.jwt.JwtProvider;
-import org.doochul.domain.oauth.token.Token;
+import org.doochul.domain.oauth.token.Jwt;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.doochul.infra.KakaoLoginTokenClient;
 import org.doochul.infra.KakaoLoginUserClient;
 import org.doochul.ui.dto.KakaoAccount;
 import org.doochul.ui.dto.KakaoAccount.Profile;
-import org.doochul.ui.dto.KakaoLoginResponse;
+import org.doochul.ui.dto.LoginResponse;
 import org.doochul.ui.dto.KakaoTokenResponse;
 import org.doochul.ui.dto.KakaoUserInfoResponse;
 import org.doochul.ui.dto.LoginRequest;
@@ -65,7 +65,7 @@ class OAuthServiceTest {
 
         final User existingUser = User.of(3411L, socialType, "카카오 유저 1");
 
-        Token token = new Token("jwt_token", LocalDateTime.now());
+        Jwt token = new Jwt("jwt_token", LocalDateTime.now());
 
         when(kakaoLoginTokenClient.getTokenInfo(authorizationCode)).thenReturn(kakaoTokenResponse);
         when(kakaoLoginUserClient.getUserInfo(kakaoTokenResponse.access_token())).thenReturn(kakaoUserInfoResponse);
@@ -74,7 +74,7 @@ class OAuthServiceTest {
         when(jwtProvider.createToken(existingUser.getId())).thenReturn(token);
 
         //when
-        KakaoLoginResponse response = oAuthService.kakaoLogin(request);
+        LoginResponse response = oAuthService.kakaoLogin(request);
 
         //then
         assertThat(existingUser.getName()).isEqualTo(response.name());

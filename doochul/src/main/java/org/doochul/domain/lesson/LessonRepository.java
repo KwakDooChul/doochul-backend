@@ -9,5 +9,5 @@ public interface LessonRepository extends JpaRepository<Lesson, Long> {
         return findById(id).orElseThrow(() -> new IllegalArgumentException("해당 수업이 없습니다."));
     }
 
-    List<Lesson> findByUser(User user);
+    List<Lesson> findByUser(final User user);
 }

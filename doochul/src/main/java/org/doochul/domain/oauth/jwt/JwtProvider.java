@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
-import org.doochul.domain.oauth.token.Token;
+import org.doochul.domain.oauth.token.Jwt;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
@@ -22,12 +22,12 @@ public class JwtProvider {
         this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     }
 
-    public Token createToken(final Long id) {
+    public Jwt createToken(final Long id) {
         final Date now = new Date();
         final Claims claims = Jwts.claims().setSubject(String.valueOf(id));
         final LocalDateTime expiredLocalDateTime = LocalDateTime.now().plusHours(10);
 
-        return new Token(Jwts.builder()
+        return new Jwt(Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + (30 * 60 * 1000L)))

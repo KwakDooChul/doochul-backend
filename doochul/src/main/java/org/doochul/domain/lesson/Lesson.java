@@ -65,7 +65,7 @@ public class Lesson extends BaseEntity {
         return lessonTime.getStartedAt();
     }
 
-    public LocalDateTime getEndedTime() {
-        return lessonTime.getEndedAt();
+    public String getProductName() {
+        return memberShip.getProduct().getName();
     }
 }

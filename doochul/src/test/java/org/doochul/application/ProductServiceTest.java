@@ -11,7 +11,7 @@ import org.doochul.domain.product.ProductRepository;
 import org.doochul.domain.product.ProductType;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
-import org.doochul.ui.dto.ProductRegisterRequest;
+import org.doochul.ui.dto.ProductCreateRequest;
 import org.doochul.ui.dto.ProductResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,14 +42,14 @@ class ProductServiceTest {
         final String name = "카카오 유저 1";
 
         final User user = User.of(userId, socialId, socialType, name);
-        final ProductRegisterRequest productRegisterRequest = new ProductRegisterRequest("안녕", ProductType.LOL, 10);
-        final Product product = Product.of(1L, user, productRegisterRequest);
+        final ProductCreateRequest productCreateRequest = new ProductCreateRequest("안녕", ProductType.LOL, 10);
+        final Product product = Product.of(1L, user, productCreateRequest);
 
         given(userRepository.getById(1L)).willReturn(user);
         given(productRepository.save(any(Product.class))).willReturn(product);
 
         // when
-        final Long productId = productService.save(userId, productRegisterRequest);
+        final Long productId = productService.createProduct(userId, productCreateRequest);
 
         // then
         assertThat(productId).isEqualTo(1L);
@@ -65,8 +65,8 @@ class ProductServiceTest {
         final String name = "카카오 유저 1";
 
         final User user = User.of(userId, socialId, socialType, name);
-        final ProductRegisterRequest productRegisterRequest = new ProductRegisterRequest("안녕", ProductType.LOL, 10);
-        final Product product = Product.of(1L, user, productRegisterRequest);
+        final ProductCreateRequest productCreateRequest = new ProductCreateRequest("안녕", ProductType.LOL, 10);
+        final Product product = Product.of(1L, user, productCreateRequest);
 
         given(productRepository.getById(1L)).willReturn(product);
 
@@ -91,8 +91,8 @@ class ProductServiceTest {
         final String name = "카카오 유저 1";
 
         final User user = User.of(userId, socialId, socialType, name);
-        final ProductRegisterRequest productRegisterRequest = new ProductRegisterRequest("안녕", ProductType.LOL, 10);
-        final Product product = Product.of(1L, user, productRegisterRequest);
+        final ProductCreateRequest productCreateRequest = new ProductCreateRequest("안녕", ProductType.LOL, 10);
+        final Product product = Product.of(1L, user, productCreateRequest);
 
         given(productRepository.findAll()).willReturn(List.of(product));
 

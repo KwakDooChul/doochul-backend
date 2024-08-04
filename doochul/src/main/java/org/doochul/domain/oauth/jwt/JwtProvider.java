@@ -5,7 +5,6 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import java.time.LocalDateTime;
 import java.util.Date;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
@@ -25,14 +24,12 @@ public class JwtProvider {
     public Jwt createToken(final Long id) {
         final Date now = new Date();
         final Claims claims = Jwts.claims().setSubject(String.valueOf(id));
-        final LocalDateTime expiredLocalDateTime = LocalDateTime.now().plusHours(10);
-
         return new Jwt(Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + (30 * 60 * 1000L)))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
-                .compact(), expiredLocalDateTime);
+                .compact());
     }
 
     public Long getPayload(final String token) {

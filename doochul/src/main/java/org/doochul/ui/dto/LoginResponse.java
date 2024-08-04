@@ -8,7 +8,6 @@ public record LoginResponse(
         Jwt accessToken
 ) {
     public static LoginResponse from(final User user, final Jwt accessToken) {
-        return new LoginResponse(
-                user.getId(), accessToken);
+        return new LoginResponse(user.getId(), accessToken);
     }
 }

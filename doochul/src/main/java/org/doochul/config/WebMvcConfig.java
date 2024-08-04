@@ -1,5 +1,6 @@
 package org.doochul.config;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.doochul.common.interceptor.AuthInterceptor;
 import org.doochul.common.resolver.CurrentUserArgumentResolver;
@@ -11,8 +12,6 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.List;
-
 @Configuration
 @RequiredArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -23,7 +22,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(final InterceptorRegistry registry) {
         registry.addInterceptor(new AuthInterceptor(jwtProvider))
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login/kakao", "/oauth/kakao");
+                .excludePathPatterns("/oauth/login");
     }
 
     @Override

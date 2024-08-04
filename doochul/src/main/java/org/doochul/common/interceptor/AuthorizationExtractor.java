@@ -4,7 +4,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.doochul.common.exception.BackEndApplicationException;
+import org.doochul.common.exception.ErrorCodes;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AuthorizationExtractor {
@@ -14,8 +17,7 @@ public class AuthorizationExtractor {
     public static String extract(final HttpServletRequest request) {
         final String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (Objects.isNull(authorizationHeader)) {
-            //TODO: 커스텀 exception으로 변경
-            throw new IllegalArgumentException();
+            throw new BackEndApplicationException(ErrorCodes.TOKEN_NULL_EXCEPTION, HttpStatus.BAD_REQUEST);
         }
 
         validateAuthorizationFormat(authorizationHeader);
@@ -24,8 +26,7 @@ public class AuthorizationExtractor {
 
     private static void validateAuthorizationFormat(final String authorizationHeader) {
         if (!authorizationHeader.toLowerCase().startsWith(BEARER_TYPE.toLowerCase())) {
-            //TODO: 커스텀 exception으로 변경
-            throw new IllegalArgumentException(authorizationHeader);
+            throw new BackEndApplicationException(ErrorCodes.TOKEN_BEARER_TYPE_EXCEPTION,HttpStatus.BAD_REQUEST);
         }
     }
 }

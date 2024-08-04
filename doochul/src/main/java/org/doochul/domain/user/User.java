@@ -32,19 +32,35 @@ public class User extends BaseEntity {
 
     private String deviceToken;
 
+    private String profileImgUrl;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
     private Identity identity;
 
-    private User(final Identity identity, final String socialId, final String name) {
+    private User(final Long id, final Identity identity, final Long socialId, final String socialType,
+                 final String name) {
+        this.id = id;
         this.identity = identity;
-        this.socialId = Long.parseLong(socialId);
+        this.socialId = socialId;
+        this.socialType = socialType;
         this.name = name;
     }
 
-    public static User of(final String socialId, final String name) {
-        return new User(Identity.GENERAL, socialId, name);
+    private User(final Identity identity, final Long socialId, final String socialType, final String name) {
+        this.identity = identity;
+        this.socialId = socialId;
+        this.socialType = socialType;
+        this.name = name;
+    }
+
+    public static User of(final Long socialId, final String socialType, final String name) {
+        return new User(Identity.GENERAL, socialId, socialType, name);
+    }
+
+    public static User of(final Long id, final Long socialId, final String socialType, final String name) {
+        return new User(id, Identity.GENERAL, socialId, socialType, name);
     }
 }

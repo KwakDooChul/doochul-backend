@@ -18,10 +18,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
         final String token = AuthorizationExtractor.extract(request);
-        if (!jwtProvider.isValidToken(token)) {
-            //TODO: 커스텀 exception으로 변경
-            throw new IllegalArgumentException();
-        }
+        jwtProvider.getPayload(token);
         return true;
     }
 }

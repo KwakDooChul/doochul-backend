@@ -9,7 +9,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 
 @Component
-
 public class KakaoLoginTokenClient {
 
     private final WebClient webClient;
@@ -27,7 +26,6 @@ public class KakaoLoginTokenClient {
     }
 
     public KakaoTokenResponse getTokenInfo(final String code) {
-
         final String uri = UriComponentsBuilder.fromUriString(TOKEN_URI)
                 .queryParam("grant_type", GRANT_TYPE)
                 .queryParam("client_id", CLIENT_ID)
@@ -37,7 +35,7 @@ public class KakaoLoginTokenClient {
 
         Flux<KakaoTokenResponse> response = webClient.post()
                 .uri(uri)
-                .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .retrieve()
                 .bodyToFlux(KakaoTokenResponse.class);
 

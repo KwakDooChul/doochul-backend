@@ -21,16 +21,16 @@ public class MemberShipService {
     private final UserRepository userRepository;
     private final RedisService redisService;
 
-    public Long save(final Long userId, final Long productId) {
-        final Product product = productRepository.findById(productId).orElseThrow();
-        final User user = userRepository.findById(userId).orElseThrow();
-
+    public Long createMemberShip(final Long userId, final Long productId) {
+        final User user = userRepository.getById(userId);
+        final Product product = productRepository.getById(productId);
         final String key = Long.toString(userId);
         if (redisService.setNX(key, "apply", Duration.ofSeconds(5))) {
-            final Long id = memberShipRepository.save(MemberShip.of(user, product, product.getCount())).getId();
+            final MemberShip memberShip = memberShipRepository.save(MemberShip.of(user, product, product.getCount()));
             redisService.delete(key);
-            return id;
+            return memberShip.getId();
         }
+        //TODO
         throw new IllegalArgumentException();
     }
 }

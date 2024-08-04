@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.ProductService;
 import org.doochul.common.resolver.AuthenticationPrincipal;
-import org.doochul.ui.dto.ProductRegisterRequest;
+import org.doochul.ui.dto.ProductCreateRequest;
 import org.doochul.ui.dto.ProductResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,26 +21,28 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @PostMapping("/product/register")
-    public ResponseEntity<Long> save(
+    @PostMapping("/product")
+    public ResponseEntity<Long> createProduct(
             @AuthenticationPrincipal final Long userId,
-            @RequestBody final ProductRegisterRequest productRegisterRequest
+            @RequestBody final ProductCreateRequest productCreateRequest
     ) {
-        final Long productId = productService.save(userId, productRegisterRequest);
+        final Long productId = productService.createProduct(userId, productCreateRequest);
         return ResponseEntity.created(URI.create("/product/" + productId)).build();
     }
 
-    @GetMapping("/products/{productId}")
-    public ResponseEntity<ProductResponse> findProduct(@PathVariable final Long productId) {
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<ProductResponse> readProduct(@PathVariable final Long productId) {
         final ProductResponse response = productService.findProduct(productId);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<ProductResponse>> findProducts() {
+    public ResponseEntity<List<ProductResponse>> readProducts() {
         final List<ProductResponse> response = productService.findProducts();
         return ResponseEntity.ok(response);
     }
+
+    // Product 수정
 
     @DeleteMapping("/product/{productId}")
     public ResponseEntity<Void> deleteProduct(@PathVariable final Long productId) {

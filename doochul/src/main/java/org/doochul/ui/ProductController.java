@@ -7,11 +7,13 @@ import org.doochul.application.ProductService;
 import org.doochul.common.resolver.AuthenticationPrincipal;
 import org.doochul.ui.dto.ProductCreateRequest;
 import org.doochul.ui.dto.ProductResponse;
+import org.doochul.ui.dto.ProductUpdateRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,7 +44,15 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    // Product 수정
+    @PutMapping("/product/{productId}")
+    public ResponseEntity<Void> updateProduct(
+            @AuthenticationPrincipal final Long userId,
+            @RequestBody final ProductUpdateRequest productUpdateRequest,
+            @PathVariable final Long productId
+    ) {
+        productService.updateProduct(userId, productUpdateRequest,productId);
+        return ResponseEntity.ok().build();
+    }
 
     @DeleteMapping("/product/{productId}")
     public ResponseEntity<Void> deleteProduct(@PathVariable final Long productId) {

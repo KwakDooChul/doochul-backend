@@ -43,6 +43,10 @@ public class MemberShip extends BaseEntity {
         return new MemberShip(null, student, product, remainingCount);
     }
 
+    public static MemberShip of(final Long id, final User student, final Product product, final Integer remainingCount) {
+        return new MemberShip(id, student, product, remainingCount);
+    }
+
     public void decreasedCount() {
         validateMinRemainingCount();
         remainingCount -= 1;

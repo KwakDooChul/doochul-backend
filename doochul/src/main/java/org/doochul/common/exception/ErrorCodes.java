@@ -11,7 +11,11 @@ public enum ErrorCodes {
 
     // PT 관련
     PRODUCT_NOT_FOUND("올바르지 않은 PT 입니다.", 3000L),
+    PRODUCT_VERIFY_OWNER("본인의 PT가 아닙니다.", 3001L),
 
+    // ProductType 관련
+    PRODUCT_TYPE_NOT_FOUND("올바르지 않은 타입입니다.", 4000L),
+   
     // 멤버쉽 관련
     MEMBERSHIP_NOT_FOUND("올바르지 않은 멤버쉽입니다.", 4000L),
 

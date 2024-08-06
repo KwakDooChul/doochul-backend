@@ -8,6 +8,7 @@ import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.doochul.ui.dto.ProductCreateRequest;
 import org.doochul.ui.dto.ProductResponse;
+import org.doochul.ui.dto.ProductUpdateRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +35,14 @@ public class ProductService {
     public List<ProductResponse> findProducts() {
         final List<Product> products = productRepository.findAll();
         return ProductResponse.from(products);
+    }
+
+    public void updateProduct(final Long userId,
+                              final ProductUpdateRequest productUpdateRequest,
+                              final Long productId) {
+        final User user = userRepository.getById(userId);
+        final Product product = productRepository.getById(productId);
+        product.update(user,productUpdateRequest);
     }
 
     public void deleteProduct(final Long productId) {

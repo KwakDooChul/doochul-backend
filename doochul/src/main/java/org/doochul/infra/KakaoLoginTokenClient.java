@@ -1,5 +1,6 @@
 package org.doochul.infra;
 
+import java.util.Objects;
 import org.doochul.ui.dto.KakaoTokenResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -25,13 +26,14 @@ public class KakaoLoginTokenClient {
         this.webClient = WebClient.create();
     }
 
-    public KakaoTokenResponse getTokenInfo(final String code) {
+    public String request(final String authCode) {
         final String uri = UriComponentsBuilder.fromUriString(TOKEN_URI)
                 .queryParam("grant_type", GRANT_TYPE)
                 .queryParam("client_id", CLIENT_ID)
                 .queryParam("redirect_uri", REDIRECT_URI)
-                .queryParam("code", code)
+                .queryParam("code", authCode)
                 .toUriString();
+        System.out.println(uri);
 
         Flux<KakaoTokenResponse> response = webClient.post()
                 .uri(uri)
@@ -39,6 +41,6 @@ public class KakaoLoginTokenClient {
                 .retrieve()
                 .bodyToFlux(KakaoTokenResponse.class);
 
-        return response.blockFirst();
+        return Objects.requireNonNull(response.blockFirst()).access_token();
     }
 }

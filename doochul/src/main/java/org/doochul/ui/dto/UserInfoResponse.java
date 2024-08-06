@@ -10,6 +10,6 @@ public record UserInfoResponse(
         Identity identity
 ) {
     public static UserInfoResponse from(final User user) {
-        return new UserInfoResponse(user.getName(), user.getSocialId(), user.getSocialType(), user.getIdentity());
+        return new UserInfoResponse(user.getName(), user.getSocialId(), user.getSocialType().name(), user.getIdentity());
     }
 }

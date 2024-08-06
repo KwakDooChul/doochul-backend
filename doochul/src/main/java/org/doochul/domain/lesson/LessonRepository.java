@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import org.doochul.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 public interface LessonRepository extends JpaRepository<Lesson, Long> {
     default Lesson getById(final Long id) {

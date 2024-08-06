@@ -11,11 +11,13 @@ public enum ErrorCodes {
 
     // PT 관련
     PRODUCT_NOT_FOUND("올바르지 않은 PT 입니다.", 3000L),
+    PRODUCT_VERIFY_OWNER("본인의 PT가 아닙니다.", 3001L),
 
     // ProductType 관련
     PRODUCT_TYPE_NOT_FOUND("올바르지 않은 타입입니다.", 4000L),
-    PRODUCT_VERIFY_OWNER("본인의 PT가 아닙니다.", 4001L),
-
+   
+    // 멤버쉽 관련
+    MEMBERSHIP_NOT_FOUND("올바르지 않은 멤버쉽입니다.", 4000L),
 
     BAD_REQUEST("BAD_REQUEST", 9404L),
     BAD_REQUEST_JSON_PARSE_ERROR("[BAD_REQUEST] JSON_PARSE_ERROR - 올바른 JSON 형식이 아님", 9405L),

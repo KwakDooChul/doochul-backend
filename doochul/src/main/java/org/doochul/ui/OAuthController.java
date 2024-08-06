@@ -1,5 +1,6 @@
 package org.doochul.ui;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,8 +26,17 @@ public class OAuthController {
             HttpServletResponse response
     ) {
         final LoginResponse kakaoResponse = OAuthService.login(loginRequest);
-        response.setHeader("Authorization", "Bearer " + kakaoResponse.accessToken().token());
+        String token = kakaoResponse.accessToken().token();
+
+        Cookie cookie = new Cookie("Authorization", token);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(60 * 60 * 24);
+
+        response.addCookie(cookie);
+
         return ResponseEntity.status(HttpStatus.OK)
-                .body("JWT 토큰이 생성되었습니다.");
+                .body("JWT 토큰이 쿠키에 저장되었습니다.");
     }
 }

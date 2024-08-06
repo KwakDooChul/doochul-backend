@@ -21,7 +21,16 @@ public class LessonController {
                              @PathVariable final Long membershipId,
                              @RequestBody final LessonCreateRequest lessonCreateRequest){
         final Long id = lessonService.createLesson(userId, membershipId, lessonCreateRequest);
-        return ResponseEntity.created(URI.create("/lessons" + id)).build();
+        return ResponseEntity.created(URI.create("/lessons/" + id)).build();
+    }
+
+    @GetMapping("/lesson/{lessonId}")
+    public ResponseEntity<LessonResponse> readLesson(
+            @AuthenticationPrincipal final Long userId,
+            @PathVariable final Long lessonId
+    ) {
+        final LessonResponse response = lessonService.findByLesson(userId, lessonId);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/lessons")

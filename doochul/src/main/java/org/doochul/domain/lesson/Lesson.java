@@ -5,9 +5,12 @@ import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.doochul.common.exception.BackEndApplicationException;
+import org.doochul.common.exception.ErrorCodes;
 import org.doochul.domain.BaseEntity;
 import org.doochul.domain.membership.MemberShip;
 import org.doochul.domain.user.User;
+import org.springframework.http.HttpStatus;
 
 @Entity
 @Getter
@@ -51,6 +54,12 @@ public class Lesson extends BaseEntity {
     public void update(final LessonTime lessonTime, final String record) {
         this.lessonTime = lessonTime;
         this.record = record;
+    }
+
+    public void verifyOwner(final User user) {
+        if (!(this.user.getId().equals(user.getId()) || this.teacher.getId().equals(user.getId()))) {
+            throw new BackEndApplicationException(ErrorCodes.LESSON_VERIFY_OWNER, HttpStatus.FORBIDDEN);
+        }
     }
 
     public String getUserName() {

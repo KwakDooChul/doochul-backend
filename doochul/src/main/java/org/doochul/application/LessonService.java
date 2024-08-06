@@ -7,6 +7,7 @@ import org.doochul.domain.lesson.LessonRepository;
 import org.doochul.domain.lesson.LessonTime;
 import org.doochul.domain.membership.MemberShip;
 import org.doochul.domain.membership.MemberShipRepository;
+import org.doochul.domain.user.Identity;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
 import org.doochul.ui.dto.LessonCreateRequest;
@@ -32,17 +33,24 @@ public class LessonService {
         return lessonRepository.save(Lesson.of(user, memberShip, lessonTime, lessonCreateRequest.record())).getId();
     }
 
-    // lesson 단일 조회 만들어야 함
+    public LessonResponse findByLesson(final Long userId, final Long lessonId) {
+        final User user = userRepository.getById(userId);
+        final Lesson lesson = lessonRepository.getById(lessonId);
+        lesson.verifyOwner(user);
+        return LessonResponse.from(lesson);
+    }
 
     @Transactional(readOnly = true)
     public List<LessonResponse> findByLessons(final Long userId) {
         final User user = userRepository.getById(userId);
-        final List<Lesson> lessons = lessonRepository.findByUser(user);
-        return LessonResponse.from(lessons);
+        if (user.getIdentity().equals(Identity.TEACHER)) {
+            return LessonResponse.from(lessonRepository.findAllByTeacher(user));
+        }
+        return LessonResponse.from(lessonRepository.findAllByUser(user));
     }
 
     @Transactional
-    public void update(final Long lessonId, final LessonCreateRequest lessonCreateRequest){
+    public void update(final Long lessonId, final LessonCreateRequest lessonCreateRequest) {
         final Lesson lesson = lessonRepository.findById(lessonId).orElseThrow();
         final LessonTime lessonTime = LessonTime.of(lessonCreateRequest.startedAt(), lessonCreateRequest.endedAt());
         lesson.update(lessonTime, lessonCreateRequest.record());

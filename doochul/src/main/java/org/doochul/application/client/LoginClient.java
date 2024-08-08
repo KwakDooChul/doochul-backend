@@ -1,13 +1,13 @@
 package org.doochul.application.client;
 
 import org.doochul.domain.oauth.SocialType;
-import org.doochul.ui.dto.KakaoUserInfoResponse;
+import org.doochul.ui.dto.UserInfo;
 
 public interface LoginClient {
 
     String requestToken(final String authCode);
 
-    KakaoUserInfoResponse findUserInfo(final String accessToken);
+    UserInfo findUserInfo(final String accessToken);
 
     SocialType getSocialType();
 }

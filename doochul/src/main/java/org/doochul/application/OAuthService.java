@@ -6,7 +6,7 @@ import org.doochul.domain.oauth.jwt.JwtProvider;
 import org.doochul.domain.oauth.token.Jwt;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
-import org.doochul.ui.dto.KakaoUserInfoResponse;
+import org.doochul.ui.dto.UserInfo;
 import org.doochul.ui.dto.LoginRequest;
 import org.doochul.ui.dto.LoginResponse;
 import org.springframework.stereotype.Service;
@@ -22,17 +22,16 @@ public class OAuthService {
     public LoginResponse login(final String socialType, final LoginRequest request) {
         final SocialType type = SocialType.from(socialType);
 
-        final KakaoUserInfoResponse kakaoUserInfoResponse = loginClients.findUserInfo(type,
-                request.authorizationCode());
+        final UserInfo userInfo = loginClients.findUserInfo(type, request.authorizationCode());
 
-        final User user = userRepository.findBySocialIdAndSocialType(kakaoUserInfoResponse.id(), type)
-                .orElseGet(() -> initUser(kakaoUserInfoResponse, type, kakaoUserInfoResponse.id()));
+        final User user = userRepository.findBySocialIdAndSocialType(userInfo.socialId(), type)
+                .orElseGet(() -> initUser(userInfo, type, userInfo.socialId()));
         final Jwt accessToken = jwtProvider.createToken(user.getId());
         return LoginResponse.from(user, accessToken);
     }
 
-    private User initUser(final KakaoUserInfoResponse userInfo, final SocialType type, final Long socialId) {
-        final User user = User.of(socialId, type, userInfo.getName());
+    private User initUser(final UserInfo userInfo, final SocialType type, final Long socialId) {
+        final User user = User.of(socialId, type, userInfo.nickname());
         return userRepository.save(user);
     }
 }

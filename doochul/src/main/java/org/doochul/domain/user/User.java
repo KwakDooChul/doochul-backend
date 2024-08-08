@@ -29,6 +29,7 @@ public class User extends BaseEntity {
 
     private Long socialId;
 
+    @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
     private String deviceToken;

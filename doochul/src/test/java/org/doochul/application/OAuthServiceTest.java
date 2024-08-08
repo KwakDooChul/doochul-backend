@@ -5,19 +5,17 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 import org.doochul.domain.oauth.jwt.JwtProvider;
 import org.doochul.domain.oauth.token.Jwt;
 import org.doochul.domain.user.User;
 import org.doochul.domain.user.UserRepository;
-import org.doochul.infra.KakaoLoginTokenClient;
-import org.doochul.infra.KakaoLoginUserClient;
+import org.doochul.infra.oauth.kakao.KakaoClient;
 import org.doochul.ui.dto.KakaoAccount;
 import org.doochul.ui.dto.KakaoAccount.Profile;
 import org.doochul.ui.dto.LoginResponse;
 import org.doochul.ui.dto.KakaoTokenResponse;
-import org.doochul.ui.dto.KakaoUserInfoResponse;
+import org.doochul.ui.dto.UserInfo;
 import org.doochul.ui.dto.LoginRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +28,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class OAuthServiceTest {
 
     @Mock
-    private KakaoLoginTokenClient kakaoLoginTokenClient;
+    private KakaoClient kakaoLoginTokenClient;
 
     @Mock
     private KakaoLoginUserClient kakaoLoginUserClient;
@@ -60,7 +58,7 @@ class OAuthServiceTest {
                 43199);
 
         final KakaoAccount kakaoAccount = new KakaoAccount(new Profile("카카오 유저 1"));
-        final KakaoUserInfoResponse kakaoUserInfoResponse = new KakaoUserInfoResponse(
+        final UserInfo kakaoUserInfoResponse = new UserInfo(
                 3411L, "2022-04-11T01:45:28Z", kakaoAccount);
 
         final User existingUser = User.of(3411L, socialType, "카카오 유저 1");

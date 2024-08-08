@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# 스크립트가 종료될 때 lock 파일을 삭제하도록 설정
-trap "rm -f /tmp/deploy.lock; exit" INT TERM EXIT
-
 # deploy.sh가 실행 중인지 확인
 if [ -e /tmp/deploy.lock ]; then
     echo "Deployment is in progress"
@@ -11,6 +8,9 @@ fi
 
 # deploy.sh가 실행 중이지 않다면 lock 파일 생성
 touch /tmp/deploy.lock
+
+# 스크립트가 종료될 때 lock 파일을 삭제하도록 설정
+trap "rm -f /tmp/deploy.lock; exit" INT TERM EXIT
 
 # Blue 를 기준으로 현재 떠있는 컨테이너를 체크한다.
 EXIST_BLUE=$(sudo docker compose -p compose-blue -f compose-blue.yml ps | grep Up)

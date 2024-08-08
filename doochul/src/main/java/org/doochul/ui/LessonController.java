@@ -3,10 +3,12 @@ package org.doochul.ui;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.doochul.application.LessonService;
+import org.doochul.application.NotificationService;
 import org.doochul.common.resolver.AuthenticationPrincipal;
 import org.doochul.ui.dto.LessonCreateRequest;
 import org.doochul.ui.dto.LessonResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LessonController {
     private final LessonService lessonService;
+    private final NotificationService notificationService;
 
     @PostMapping("/lesson/save/memberships/{membershipId}")
     public ResponseEntity<Long> createLesson(@AuthenticationPrincipal Long userId,
@@ -49,5 +52,11 @@ public class LessonController {
     public ResponseEntity<Void> delete(@PathVariable final Long lessonId) {
         lessonService.delete(lessonId);
         return ResponseEntity.noContent().build();
+    }
+
+    @Scheduled(cron = "0 0/1 * * * *")
+    public void sendLessonStartAndEndNotifications() {
+        notificationService.sendStartLesson();
+        notificationService.sendEndLesson();
     }
 }

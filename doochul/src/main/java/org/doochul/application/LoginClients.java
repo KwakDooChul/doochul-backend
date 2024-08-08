@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import org.doochul.application.client.LoginClient;
 import org.doochul.domain.oauth.SocialType;
-import org.doochul.ui.dto.KakaoUserInfoResponse;
+import org.doochul.ui.dto.UserInfo;
 
 public class LoginClients {
 
@@ -18,7 +18,7 @@ public class LoginClients {
         this.clients = mapping;
     }
 
-    public KakaoUserInfoResponse findUserInfo(final SocialType socialType, final String code) {
+    public UserInfo findUserInfo(final SocialType socialType, final String code) {
         final LoginClient client = getClient(socialType);
         final String accessToken = client.requestToken(code);
         return client.findUserInfo(accessToken);

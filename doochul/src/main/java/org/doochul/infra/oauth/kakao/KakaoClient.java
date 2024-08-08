@@ -1,7 +1,9 @@
-package org.doochul.infra;
+package org.doochul.infra.oauth.kakao;
 
 import java.util.Objects;
+import org.doochul.ui.dto.KakaoProfileResponse;
 import org.doochul.ui.dto.KakaoTokenResponse;
+import org.doochul.ui.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -10,7 +12,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 
 @Component
-public class KakaoLoginTokenClient {
+public class KakaoClient {
+
+    private static final String USER_INFO_URI = "https://kapi.kakao.com/v2/user/me";
 
     private final WebClient webClient;
     @Value("${token.uri}")
@@ -22,8 +26,8 @@ public class KakaoLoginTokenClient {
     @Value("${client.id}")
     private String CLIENT_ID;
 
-    public KakaoLoginTokenClient() {
-        this.webClient = WebClient.create();
+    public KakaoClient() {
+        this.webClient = WebClient.create(USER_INFO_URI);
     }
 
     public String request(final String authCode) {
@@ -33,7 +37,6 @@ public class KakaoLoginTokenClient {
                 .queryParam("redirect_uri", REDIRECT_URI)
                 .queryParam("code", authCode)
                 .toUriString();
-        System.out.println(uri);
 
         Flux<KakaoTokenResponse> response = webClient.post()
                 .uri(uri)
@@ -43,4 +46,15 @@ public class KakaoLoginTokenClient {
 
         return Objects.requireNonNull(response.blockFirst()).access_token();
     }
+
+    public UserInfo getUserInfo(final String token) {
+        Flux<KakaoProfileResponse> response = webClient.get()
+                .header("Authorization", "Bearer " + token)
+                .retrieve()
+                .bodyToFlux(KakaoProfileResponse.class);
+        return Objects.requireNonNull(response.blockFirst()).toUserInfo();
+    }
 }
+
+
+

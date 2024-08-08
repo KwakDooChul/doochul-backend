@@ -12,6 +12,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.doochul.domain.BaseEntity;
+import org.doochul.domain.oauth.SocialType;
 
 @Entity
 @Getter
@@ -28,9 +29,12 @@ public class User extends BaseEntity {
 
     private Long socialId;
 
-    private String socialType;
+    @Enumerated(EnumType.STRING)
+    private SocialType socialType;
 
     private String deviceToken;
+
+    private String profileImgUrl;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -38,13 +42,27 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Identity identity;
 
-    private User(final Identity identity, final String socialId, final String name) {
+    private User(final Long id, final Identity identity, final Long socialId, final SocialType socialType,
+                 final String name) {
+        this.id = id;
         this.identity = identity;
-        this.socialId = Long.parseLong(socialId);
+        this.socialId = socialId;
+        this.socialType = socialType;
         this.name = name;
     }
 
-    public static User of(final String socialId, final String name) {
-        return new User(Identity.GENERAL, socialId, name);
+    private User(final Identity identity, final Long socialId, final SocialType socialType, final String name) {
+        this.identity = identity;
+        this.socialId = socialId;
+        this.socialType = socialType;
+        this.name = name;
+    }
+
+    public static User of(final Long socialId, final SocialType socialType, final String name) {
+        return new User(Identity.GENERAL, socialId, socialType, name);
+    }
+
+    public static User of(final Long id, final Long socialId, final SocialType socialType, final String name) {
+        return new User(id, Identity.GENERAL, socialId, socialType, name);
     }
 }

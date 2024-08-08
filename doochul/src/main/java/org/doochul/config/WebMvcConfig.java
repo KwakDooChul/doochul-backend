@@ -1,5 +1,6 @@
 package org.doochul.config;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.doochul.common.interceptor.AuthInterceptor;
 import org.doochul.common.resolver.CurrentUserArgumentResolver;
@@ -11,20 +12,18 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.List;
-
 @Configuration
 @RequiredArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {
 
     private final JwtProvider jwtProvider;
 
-//    @Override
-//    public void addInterceptors(final InterceptorRegistry registry) {
-//        registry.addInterceptor(new AuthInterceptor(jwtProvider))
-//                .addPathPatterns("/**")
-//                .excludePathPatterns("/login/kakao", "/oauth/kakao");
-//    }
+    @Override
+    public void addInterceptors(final InterceptorRegistry registry) {
+        registry.addInterceptor(new AuthInterceptor(jwtProvider))
+                .addPathPatterns("/**")
+                .excludePathPatterns("/oauth/**");
+    }
 
     @Override
     public void addCorsMappings(final CorsRegistry registry) {
@@ -36,8 +35,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 
-//    @Override
-//    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-//        argumentResolvers.add(new CurrentUserArgumentResolver(jwtProvider));
-//    }
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new CurrentUserArgumentResolver(jwtProvider));
+    }
 }

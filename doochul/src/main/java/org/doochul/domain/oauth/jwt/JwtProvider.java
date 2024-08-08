@@ -8,26 +8,29 @@ import io.jsonwebtoken.security.Keys;
 import java.util.Date;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
+import org.doochul.domain.oauth.token.Jwt;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
 public class JwtProvider {
 
-    private final SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final SecretKey secretKey;
 
-    public String createToken(final Long id) {
+    public JwtProvider() {
+        this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    }
+
+    public Jwt createToken(final Long id) {
         final Date now = new Date();
         final Claims claims = Jwts.claims().setSubject(String.valueOf(id));
-
-        return Jwts.builder()
+        return new Jwt(Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + (30 * 60 * 1000L)))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
-                .compact();
+                .compact());
     }
-
 
     public Long getPayload(final String token) {
         String sub = getClaims(token)
@@ -44,19 +47,6 @@ public class JwtProvider {
                     .parseClaimsJws(token);
         } catch (Exception e) {
             throw new IllegalArgumentException(e);
-        }
-    }
-
-    public boolean isValidToken(final String jwtToken) {
-        try {
-            Claims claims = Jwts.parserBuilder()
-                    .setSigningKey(secretKey)
-                    .build()
-                    .parseClaimsJws(jwtToken)
-                    .getBody();
-            return !claims.getExpiration().before(new Date());
-        } catch (Exception e) {
-            return false;
         }
     }
 }

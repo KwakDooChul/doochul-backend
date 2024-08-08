@@ -11,9 +11,13 @@ import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.doochul.common.exception.BackEndApplicationException;
+import org.doochul.common.exception.ErrorCodes;
 import org.doochul.domain.BaseEntity;
 import org.doochul.domain.user.User;
-import org.doochul.ui.dto.ProductRegisterRequest;
+import org.doochul.ui.dto.ProductCreateRequest;
+import org.doochul.ui.dto.ProductUpdateRequest;
+import org.springframework.http.HttpStatus;
 
 @Entity
 @Getter
@@ -35,11 +39,12 @@ public class Product extends BaseEntity {
 
     private Integer count;
 
-    private Product(final Long id,
-                    final String name,
-                    final ProductType type,
-                    final User teacher,
-                    final Integer count
+    private Product(
+            final Long id,
+            final String name,
+            final ProductType type,
+            final User teacher,
+            final Integer count
     ) {
         this.id = id;
         this.name = name;
@@ -48,9 +53,40 @@ public class Product extends BaseEntity {
         this.count = count;
     }
 
-    public static Product of(final User user, final ProductRegisterRequest productRegisterRequest) {
-        return new Product(null, productRegisterRequest.name(), productRegisterRequest.type(), user,
-                productRegisterRequest.count());
+    private Product(
+            final String name,
+            final ProductType type,
+            final User teacher,
+            final Integer count
+    ) {
+        this.name = name;
+        this.type = type;
+        this.teacher = teacher;
+        this.count = count;
+    }
+
+    public static Product of(final User user, final ProductCreateRequest productCreateRequest) {
+        return new Product(productCreateRequest.name(), productCreateRequest.type(), user,
+                productCreateRequest.count());
+    }
+
+    public static Product of(final Long id, final User user, final ProductCreateRequest productCreateRequest) {
+        return new Product(id, productCreateRequest.name(), productCreateRequest.type(), user,
+                productCreateRequest.count());
+    }
+
+    public void update(final User user, final ProductUpdateRequest productUpdateRequest) {
+        verifyOwner(user);
+        this.name = productUpdateRequest.name();
+        this.type = ProductType.from(productUpdateRequest.type());
+        this.count = productUpdateRequest.count();
+    }
+
+    private void verifyOwner(User user) {
+        if (!teacher.getId().equals(user.getId())) {
+            throw new BackEndApplicationException(ErrorCodes.PRODUCT_VERIFY_OWNER,
+                    HttpStatus.FORBIDDEN);
+        }
     }
 
     public String getTeacherName() {

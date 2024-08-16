@@ -36,7 +36,7 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java:8.0.28'
-    
+
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -46,6 +46,10 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:3.12.4'
 }
 
-test{
+configurations.configureEach {
+    exclude group: 'commons-logging', module: 'commons-logging'
+}
+
+test {
     useJUnitPlatform()
 }

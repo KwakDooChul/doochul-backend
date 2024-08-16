@@ -22,7 +22,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(final InterceptorRegistry registry) {
         registry.addInterceptor(new AuthInterceptor(jwtProvider))
                 .addPathPatterns("/**")
-                .excludePathPatterns("/oauth/**");
+                .excludePathPatterns("/oauth/**","/logging");
     }
 
     @Override

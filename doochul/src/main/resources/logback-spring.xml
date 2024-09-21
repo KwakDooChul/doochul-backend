@@ -4,7 +4,7 @@
         <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
         <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
-                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+                <pattern>%d{HH:mm:ss.SSS} [%X{request_id}] [%X{controller}] [%X{method}] [%thread] %-5level %logger{36} - %msg%n</pattern>
                 <charset>utf8</charset>
             </encoder>
         </appender>
@@ -14,6 +14,24 @@
     </springProfile>
     <springProfile name="prod">
         <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+        <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>logs/info/info.log</file>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>INFO</level>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </filter>
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} [%X{request_id}] [%X{controller}] [%X{method}] [%thread] %-5level %logger{36} - %msg%n</pattern>
+                <charset>utf8</charset>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>logs/info/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <maxFileSize>100MB</maxFileSize>
+                <maxHistory>30</maxHistory>
+                <totalSizeCap>3GB</totalSizeCap>
+            </rollingPolicy>
+        </appender>
         <appender name="WARN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <file>logs/warn/warn.log</file>
             <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -22,7 +40,7 @@
                 <onMismatch>DENY</onMismatch>
             </filter>
             <encoder>
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger{36}] - %msg%n</pattern>
+                <pattern>%d{HH:mm:ss.SSS} [%X{request_id}] [%X{controller}] [%X{method}] [%thread] %-5level %logger{36} - %msg%n</pattern>
                 <charset>utf8</charset>
             </encoder>
             <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -40,7 +58,7 @@
                 <onMismatch>DENY</onMismatch>
             </filter>
             <encoder>
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger{36}] - %msg%n</pattern>
+                <pattern>%d{HH:mm:ss.SSS} [%X{request_id}] [%X{controller}] [%X{method}] [%thread] %-5level %logger{36} - %msg%n</pattern>
                 <charset>utf8</charset>
             </encoder>
             <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -53,6 +71,7 @@
         <root level="INFO">
             <appender-ref ref="WARN_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
+            <appender-ref ref="INFO_FILE"/>
         </root>
     </springProfile>
 </configuration>

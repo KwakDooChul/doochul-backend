@@ -1,0 +1,424 @@
+18:46:31.111 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88073 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+18:46:31.115 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+18:46:31.437 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+18:46:31.437 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+18:46:31.603 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:46:31.604 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:46:31.686 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78 ms. Found 4 JPA repository interfaces.
+18:46:31.695 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:46:31.696 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+18:46:31.704 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:46:31.704 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:46:31.704 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:46:31.705 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:46:31.705 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+18:46:31.996 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+18:46:32.003 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:46:32.003 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+18:46:32.035 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:46:32.035 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 900 ms
+18:46:32.121 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:46:32.151 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+18:46:32.167 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:46:32.310 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:46:32.324 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:46:33.409 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+18:46:33.419 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+18:47:39.085 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88110 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+18:47:39.087 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+18:47:39.509 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+18:47:39.509 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 5 ms.
+18:47:39.716 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:47:39.717 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:47:39.809 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 4 JPA repository interfaces.
+18:47:39.818 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:47:39.818 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+18:47:39.826 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:47:39.826 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:47:39.827 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:47:39.827 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:47:39.827 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+18:47:40.163 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+18:47:40.168 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:47:40.169 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+18:47:40.196 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:47:40.197 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1083 ms
+18:47:40.276 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:47:40.311 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+18:47:40.328 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:47:40.459 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:47:40.472 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:47:41.546 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+18:47:41.560 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+18:55:37.281 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88409 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+18:55:37.283 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+18:55:37.630 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+18:55:37.641 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 14 ms.
+18:55:37.787 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:55:37.787 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:55:37.952 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 161 ms. Found 4 JPA repository interfaces.
+18:55:37.965 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:55:37.966 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+18:55:37.977 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:37.977 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:37.977 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:37.978 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:37.978 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+18:55:38.266 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+18:55:38.272 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:55:38.272 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+18:55:38.305 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:55:38.305 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1001 ms
+18:55:38.416 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:55:38.449 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+18:55:38.465 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:55:38.593 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:55:38.607 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:55:39.697 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+18:55:39.707 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+18:55:55.629 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88427 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+18:55:55.630 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+18:55:55.921 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+18:55:55.922 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+18:55:56.082 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:55:56.083 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:55:56.166 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80 ms. Found 4 JPA repository interfaces.
+18:55:56.176 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:55:56.177 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+18:55:56.185 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:56.185 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:56.185 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:56.186 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:55:56.186 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+18:55:56.501 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+18:55:56.508 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:55:56.508 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+18:55:56.546 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:55:56.547 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 901 ms
+18:55:56.636 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:55:56.670 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+18:55:56.690 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:55:56.840 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:55:56.856 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:55:57.949 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+18:55:57.961 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+18:58:14.909 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88462 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+18:58:14.911 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+18:58:15.235 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+18:58:15.236 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+18:58:15.406 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:58:15.407 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:58:15.491 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80 ms. Found 4 JPA repository interfaces.
+18:58:15.502 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:58:15.502 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+18:58:15.511 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:15.512 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:15.512 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:15.512 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:15.512 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+18:58:15.812 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+18:58:15.818 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:58:15.818 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+18:58:15.847 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:58:15.848 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 918 ms
+18:58:15.932 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:58:15.962 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+18:58:15.978 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:58:16.115 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:58:16.127 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:58:16.317 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2db3675a
+18:58:16.318 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18:58:16.806 [] [] [] [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18:58:17.019 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18:58:17.555 [] [] [] [main] INFO  o.s.b.c.r.s.JobRepositoryFactoryBean - No database type set, using meta data indicating: MYSQL
+18:58:17.688 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18:58:17.692 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18:58:17.699 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18:58:17.700 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+18:58:17.709 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+18:58:52.174 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88481 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+18:58:52.175 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+18:58:52.500 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+18:58:52.501 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+18:58:52.663 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:58:52.664 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:58:52.757 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 4 JPA repository interfaces.
+18:58:52.767 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+18:58:52.767 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+18:58:52.776 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:52.776 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:52.777 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:52.777 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+18:58:52.777 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+18:58:53.134 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+18:58:53.142 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:58:53.142 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+18:58:53.174 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:58:53.174 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 980 ms
+18:58:53.274 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:58:53.309 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+18:58:53.325 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:58:53.457 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:58:53.470 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:58:53.656 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ca0166c
+18:58:53.656 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18:58:54.181 [] [] [] [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18:58:54.342 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18:58:54.854 [] [] [] [main] INFO  o.s.b.c.r.s.JobRepositoryFactoryBean - No database type set, using meta data indicating: MYSQL
+18:59:05.153 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18:59:05.156 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18:59:05.159 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18:59:05.160 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+18:59:05.170 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+19:02:17.251 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88530 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+19:02:17.252 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+19:02:17.560 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+19:02:17.561 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+19:02:17.744 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:02:17.744 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:02:17.830 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 4 JPA repository interfaces.
+19:02:17.840 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:02:17.841 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+19:02:17.851 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:17.851 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:17.851 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:17.852 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:17.852 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+19:02:18.156 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+19:02:18.162 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:02:18.163 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+19:02:18.196 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:02:18.196 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 924 ms
+19:02:18.288 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:02:18.321 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+19:02:18.338 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:02:18.461 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:02:18.478 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:02:18.629 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a77eb6
+19:02:18.630 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:02:18.657 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:02:18.660 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19:02:18.661 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+19:02:18.667 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+19:02:26.985 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88539 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+19:02:26.986 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+19:02:27.387 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+19:02:27.388 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+19:02:27.588 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:02:27.589 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:02:27.681 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88 ms. Found 4 JPA repository interfaces.
+19:02:27.692 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:02:27.693 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+19:02:27.703 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:27.704 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:27.704 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:27.704 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:02:27.704 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+19:02:28.001 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+19:02:28.006 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:02:28.007 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+19:02:28.036 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:02:28.036 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1031 ms
+19:02:28.126 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:02:28.159 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+19:02:28.175 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:02:28.297 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:02:28.309 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:02:28.466 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c6bf8d9
+19:02:28.466 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:02:28.492 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:02:28.494 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19:02:28.495 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+19:02:28.502 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+19:03:07.459 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88559 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+19:03:07.460 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+19:03:07.753 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+19:03:07.753 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+19:03:07.909 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:03:07.910 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:03:07.996 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83 ms. Found 4 JPA repository interfaces.
+19:03:08.004 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:03:08.004 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+19:03:08.014 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:03:08.014 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:03:08.014 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:03:08.014 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:03:08.015 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+19:03:08.314 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+19:03:08.320 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:03:08.320 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+19:03:08.351 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:03:08.351 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 874 ms
+19:03:08.445 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:03:08.477 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+19:03:08.493 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:03:08.629 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:03:08.643 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:03:08.811 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e2d65e1
+19:03:08.812 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:03:09.356 [] [] [] [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:03:09.507 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:03:10.069 [] [] [] [main] INFO  o.s.b.c.r.s.JobRepositoryFactoryBean - No database type set, using meta data indicating: MYSQL
+19:03:20.366 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:03:20.379 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:03:20.386 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19:03:20.388 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+19:03:20.401 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+19:04:26.140 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88595 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+19:04:26.142 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+19:04:26.460 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+19:04:26.461 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 2 ms.
+19:04:26.616 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:04:26.617 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:04:26.706 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 86 ms. Found 4 JPA repository interfaces.
+19:04:26.715 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:04:26.716 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+19:04:26.724 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:04:26.725 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:04:26.725 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:04:26.725 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:04:26.725 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+19:04:27.030 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+19:04:27.036 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:04:27.036 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+19:04:27.072 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:04:27.072 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 911 ms
+19:04:27.156 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:04:27.184 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+19:04:27.199 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:04:27.329 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:04:27.342 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:04:27.509 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@287317df
+19:04:27.513 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:04:27.981 [] [] [] [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:04:28.135 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:04:28.640 [] [] [] [main] INFO  o.s.b.c.r.s.JobRepositoryFactoryBean - No database type set, using meta data indicating: MYSQL
+19:04:38.937 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:04:38.941 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:04:38.946 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19:04:38.948 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+19:04:38.957 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+19:07:11.353 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88667 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+19:07:11.354 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+19:07:11.690 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+19:07:11.690 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+19:07:11.862 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:07:11.863 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:07:11.967 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95 ms. Found 4 JPA repository interfaces.
+19:07:11.975 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:07:11.975 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+19:07:11.984 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:07:11.984 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:07:11.984 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:07:11.984 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:07:11.984 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+19:07:12.282 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+19:07:12.288 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:07:12.288 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+19:07:12.318 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:07:12.319 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 945 ms
+19:07:12.401 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:07:12.432 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+19:07:12.447 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:07:12.582 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:07:12.595 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:07:12.753 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c6bf8d9
+19:07:12.758 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:07:13.254 [] [] [] [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:07:13.427 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:07:13.998 [] [] [] [main] INFO  o.s.b.c.r.s.JobRepositoryFactoryBean - No database type set, using meta data indicating: MYSQL
+19:07:24.298 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:07:24.303 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:07:24.309 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19:07:24.310 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+19:07:24.321 [] [] [] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+19:09:05.496 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88772 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+19:09:05.498 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+19:09:05.819 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+19:09:05.820 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 3 ms.
+19:09:05.999 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:09:06.000 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:09:06.086 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 4 JPA repository interfaces.
+19:09:06.096 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:09:06.096 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+19:09:06.108 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:09:06.108 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:09:06.108 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:09:06.108 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:09:06.108 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+19:09:06.417 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+19:09:06.423 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:09:06.424 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+19:09:06.456 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:09:06.456 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 935 ms
+19:09:06.544 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:09:06.580 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+19:09:06.600 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:09:06.751 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:09:06.766 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:09:06.931 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e18d2a2
+19:09:06.936 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:09:07.480 [] [] [] [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:09:07.628 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:09:08.193 [] [] [] [main] INFO  o.s.b.c.r.s.JobRepositoryFactoryBean - No database type set, using meta data indicating: MYSQL
+19:09:18.480 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:09:18.488 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:09:18.518 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19:10:14.575 [] [] [] [main] INFO  org.doochul.BackendApplication - Starting BackendApplication using Java 17.0.5 with PID 88806 (/Users/yuseonjun/dev/doochul-backend/doochul/build/classes/java/main started by yuseonjun in /Users/yuseonjun/dev/doochul-backend/doochul)
+19:10:14.576 [] [] [] [main] INFO  org.doochul.BackendApplication - The following 1 profile is active: "prod"
+19:10:14.867 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Bean jobRegistryBeanPostProcessor already defined in the application context, skipping the registration of a jobRegistryBeanPostProcessor
+19:10:14.868 [] [] [] [main] INFO  o.s.b.c.c.annotation.BatchRegistrar - Finished Spring Batch infrastructure beans configuration in 2 ms.
+19:10:15.023 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:10:15.023 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:10:15.109 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 4 JPA repository interfaces.
+19:10:15.120 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+19:10:15.131 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+19:10:15.139 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.lesson.LessonRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:10:15.139 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.membership.MemberShipRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:10:15.140 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.product.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:10:15.140 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface org.doochul.domain.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+19:10:15.140 [] [] [] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+19:10:15.426 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+19:10:15.432 [] [] [] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:10:15.432 [] [] [] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+19:10:15.464 [] [] [] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:10:15.464 [] [] [] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 871 ms
+19:10:15.545 [] [] [] [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:10:15.574 [] [] [] [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+19:10:15.590 [] [] [] [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:10:15.708 [] [] [] [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:10:15.722 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:10:15.874 [] [] [] [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@64508788
+19:10:15.876 [] [] [] [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:10:16.355 [] [] [] [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:10:16.498 [] [] [] [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:10:16.988 [] [] [] [main] INFO  o.s.b.c.r.s.JobRepositoryFactoryBean - No database type set, using meta data indicating: MYSQL
+19:10:17.795 [] [] [] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+19:10:17.802 [] [] [] [main] INFO  org.doochul.BackendApplication - Started BackendApplication in 3.482 seconds (process running for 3.901)
+19:10:31.172 [] [] [] [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+19:10:31.175 [] [] [] [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+19:10:31.294 [] [] [] [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:10:31.295 [] [] [] [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:10:31.302 [] [] [] [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
